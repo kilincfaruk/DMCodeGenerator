@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Memory Code Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="/path/to/styles/default.min.css">
+  <script src="/path/to/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="generator.js"></script>
+  <script src="jquery-ui.js"></script>
+
+  <div class="hero-img"></div>
+
+  <div class="hero">
+    <h1>MAN Turkey Engineering Bus Order Quality</h1>
+    <h2 class="subhead">Digital Memory Code Generator</h2>
+  </div>
+  <div class="wrapper">
+    <div class="left">
+      <ul class="mainMenu">
+        <div id="tabs" class="menu-tabs">
+          <ul class="floatLeft">
+            <li><a href="#gfz" class="btn">GFZ</a></li>
+            <li><a href="#vkgr" class="btn">Vkgr</a></li>
+            <li><a href="#ksw" class="btn">Ksw</a></li>
+            <li><a href="#code" class="btn">Code</a></li>
+            <li><a href="#vcode" class="btn">Vehicle Code</a></li>
+            <li>
+              <a href="#warningg" class="btn" id="warning">Warning Message</a>
+            </li>
+            <li>
+              <a href="#errorr" class="btn" id="error">Error Message</a>
+            </li>
+          </ul>
+          <!-- GFZ tab 
+                        Faruk7.06.2022-->
+          <div id="gfz" class="subMenu">
+            <ul class="floatLeft">
+              <span>Please select GFZ type:</span>
+              <br /><br />
+              <li>
+                <input type="checkbox" title=" Check This For Select Everyone" id="PAll" /><label id="pLabel"
+                  for="option">P <i class="arrow down"></i></label>
+                <ul id="ulPLabel" class="display-none">
+                  <li>
+                    <label><input type="checkbox" name="Pcheck" class="subOption" value="P06" />P06</label>
+                  </li>
+                  <li>
+                    <label><input type="checkbox" name="Pcheck" class="subOption" value="P10" />P10</label>
+                  </li>
+                  <li>
+                    <label><input type="checkbox" name="Pcheck" class="subOption" value="P14" />P14</label>
+                  </li>
+                  <li>
+                    <label><input type="checkbox" name="Pcheck" class="subOption" value="P15" />P15</label>
+                  </li>
+                  <li>
+                    <label><input type="checkbox" name="Pcheck" class="subOption" value="P16" />P16</label>
+                  </li>
+                  <li>
+                    <label><input type="checkbox" name="Pcheck" class="subOption" value="P20" />P20</label>
+                  </li>
+                  <li>
+                    <label><input type="checkbox" name="Pcheck" class="subOption" value="P21" />P21</label>
+                  </li>
+                  <li>
+                    <label><input type="checkbox" name="Pcheck" class="subOption" value="P22" />P22</label>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <input type="checkbox" title=" Check This For Select Everyone" id="BAll" /><label id="bLabel"
+                  for="option">B <i class="arrow down"></i>
+                </label>
+                <ul id="ulBLabel" class="display-none">
+                  <li>
+                    <label><input type="checkbox" id="B12C" name="Bcheck" class="subOption" value="B12C" />
+                      12C</label>
+                  </li>
+                  <li>
+                    <label><input type="checkbox" id="B12C-E" name="Bcheck" class="subOption" value="B12CE" />
+                      12C E</label>
+                  </li>
+                  <li>
+                    <label><input type="checkbox" id="B18C" name="Bcheck" class="subOption" value="B18C" />
+                      18C</label>
+                  </li>
+                  <li>
+                    <label><input type="checkbox" id="B18C-E" name="Bcheck" class="subOption" value="B18CE" />
+                      18C E</label>
+                  </li>
+                  <li>
+                    <label><input type="checkbox" id="B19C" name="Bcheck" class="subOption" value="B19C" />
+                      19C</label>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <label><input type="checkbox" name="Acheck" id="A78" class="subOption" value="A78" />
+                  A78</label>
+              </li>
+              <li>
+                <input type="checkbox" title=" Check This For Select Everyone" id="RAll" /><label id="rLabel"
+                  for="option">R <i class="arrow down"></i>
+                </label>
+                <ul id="ulRLabel" class="display-none">
+                  <li>
+                    <label><input type="checkbox" name="Rcheck" id="R07" class="subOption" value="R07" />
+                      R07</label>
+                  </li>
+                  <li>
+                    <label><input type="checkbox" name="Rcheck" id="R08" class="subOption" value="R08" />
+                      R08</label>
+                  </li>
+                  <li>
+                    <label><input type="checkbox" name="Rcheck" id="R09" class="subOption" value="R09" />
+                      R09</label>
+                  </li>
+                  <li>
+                    <label><input type="checkbox" name="Rcheck" id="R10" class="subOption" value="R10" />
+                      R10</label>
+                  </li>
+                  <li>
+                    <label><input type="checkbox" name="Rcheck" id="R60" class="subOption" value="R60" />
+                      R60</label>
+                  </li>
+                  <li>
+                    <label><input type="checkbox" name="Rcheck" id="R61" class="subOption" value="R61" />
+                      R61</label>
+                  </li>
+                  <li>
+                    <label><input type="checkbox" name="Rcheck" id="R62" class="subOption" value="R61" />
+                      R62</label>
+                  </li>
+                </ul>
+              </li>
+              <br /><br />
+
+            </ul>
+
+            <input type="text" id="vehicleBandText" title="write your text" placeholder="FH" name="description"
+              value="" />
+            <button class="button" id="vehicleGenerate">Generate</button>
+
+            <button type="submit" class="button" id="generate">
+              Generate
+            </button>
+          </div>
+
+          <!-- VKGR tab -->
+
+          <div id="vkgr" class="subMenu">
+            <label><input type="radio" name="vkgrselector" id="containstype" />Contains Type</label>
+            <br />
+            <ul class="floatLeft">
+              <li>
+                <label><input type="radio" title="if(Vkgr.Code.Contains(" id="contains" name="radio-btn"
+                    value="Contains" />Contains</label>
+              </li>
+              <li>
+                <label><input type="radio" title="if(Vkgr.Code.ContainsAny(" id="contains" name="radio-btn"
+                    value="ContainsAny" />Contains Any</label>
+              </li>
+              <li>
+                <label><input type="radio" title="if(Vkgr.Code.NotContains(" id="contains" name="radio-btn"
+                    value="NotContains" />Not Contains</label>
+              </li>
+              <li>
+                <label><input type="radio" title="if(Vkgr.Code.NotContainsAny(" id="contains" name="radio-btn"
+                    value="NotContainsAny" />Not Contains Any</label>
+              </li>
+            </ul>
+            <br /><br />
+            <br /><br />
+            <br /><br />
+
+            <span>
+              If your statement false please check this button: <br />
+            </span>
+            <label><input type="checkbox" id="false" name="tf-btn" value="true" />False</label>
+            <br /><br />
+            <input type="text" id="textArea" title="Example: xxxxxxx" name="description" value=""
+              placeholder="83#5370B272" />
+            <br /><br />
+            <label>
+              <input type="radio" id="centerCode" name="vkgrselector" value="CenterCode" />Center Code</label><br />
+            <input type="text" id="centerTextArea" title="Example: xxxxxxx" name="centerDescription" value=""
+              placeholder="#5380" />
+            <br /><br />
+            <label><input type="radio" id="serialVkgrIsEmpty" title="if(serialVkgr.IsEmpty())" name="tf-btn"
+                value="serialVkgr" />serialVkgr.IsEmpty())</label>
+            <br /><br />
+            <label><input type="radio" id="serialVkgrIsNull" title="if(serialVkgr.IsNull())" name="tf-btn"
+                value="serialVkgr" />serialVkgr.IsNull())</label>
+            <br /><br />
+            <button class="button" id="vkgrGenerate">Generate</button>
+          </div>
+
+          <!-- KSW tab -->
+          <div id="ksw" class="subMenu">
+            <label for="html">Classes</label>
+            <br /><br />
+            <label><input type="radio" id="code-button" title="if(Ksw.Code.Gets(" name="ksw-btn" />Ksw.Code.Gets</label>
+            <ul>
+              <li>
+                <label>
+                  <input type="checkbox" id="ksw-false" name="ksw-btn" value="false" />False</label>
+              </li>
+            </ul>
+            <input type="text" id="kswCode" title="Example: xxxxxxx" name="description" value="" placeholder="Vxxxx" />
+            <br /><br />
+            <label><input type="radio" id="text-button" title="if(Ksw.Text.IsMatch(@"
+                name="ksw-btn" />Ksw.Text.IsMatch</label><br />
+            <ul>
+              <li>
+                <label>
+                  <input type="radio" id="ksw-true" name="kswtf-btn" title="if(Ksw.Text.IsMatch(@ &quot&quot)==true){"
+                    value="true" />True</label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" id="ksw-false" name="kswtf-btn" title="if(Ksw.Text.IsMatch(@ &quot&quot)==false){"
+                    value="false" />False</label>
+              </li>
+            </ul>
+
+            <input type="text" id="kswTextArea" title="" placeholder="prosys.*box" name="description" value="" />
+            <button class="button" id="kswGenerate">Generate</button>
+          </div>
+
+          <!-- Code tab -->
+
+          <div id="code" class="subMenu">
+            <ul>
+              <li>
+                <label><input type="radio" title="if(Code.Contains(" id="contains" name="coderadio"
+                    value="Contains" />Contains</label>
+              </li>
+              <li>
+                <label><input type="radio" title="if(Code.ContainsAny(" id="contains" name="coderadio"
+                    value="ContainsAny" />Contains Any</label>
+              </li>
+              <li>
+                <label><input type="radio" title="if(Code.NotContains(" id="contains" name="coderadio"
+                    value="NotContains" />Not Contains</label>
+              </li>
+              <li>
+                <label><input type="radio" title="if(Code.NotContainsAny(" id="contains" name="coderadio"
+                    value="NotContainsAny" />
+                  Not Contains Any</label>
+              </li>
+            </ul>
+            <br /><br />
+            <input type="text" id="codeTextArea" title="Example: xxxxxxx" placeholder="526KD" name="description" />
+            <br /><br />
+            <button class="button" id="codeGenerate">Generate</button>
+          </div>
+
+          <!-- Vehicle Code tab -->
+          <div id="vcode" class="subMenu">
+            <label>Classes</label>
+            <br /><br />
+            <!-- Vehicle.Properties.GFZ -->
+            <label><input type="radio" id="vehicleProperties" title="if(Vehicle.BAND_TMF==(&quot &quot"
+                name="vehicleTypeRadio" />Vehicle.Properties.GFZ</label>
+            <ul>
+              <li>
+                <label><input type="radio" value="Left" name="properties" />Left</label>
+              </li>
+              <li>
+                <label><input type="radio" value="Right" name="properties" />Right</label>
+              </li>
+            </ul>
+            <span>How Many:</span><br />
+            <input type="number" placeholder="Left(3) || Right(3) " id="gfzProperties" />
+            <br /><br />
+            <span>Search Keys:</span><br />
+            <input type="text" id="gfzPropertiesText" />
+            <br /><br /><br />
+
+            <!-- Vehicle.BAND_TMF -->
+            <label><input type="radio" id="vehicleBand" name="vehicleTypeRadio" />Vehicle.BAND_TMF</label><br />
+
+            <input type="text" id="vehicleBandText" title="write your text" placeholder="FH" name="description"
+              value="" />
+            <button class="button" id="vehicleGenerate">Generate</button>
+          </div>
+
+          <!-- Warning tab -->
+          <div id="warningg" class="subMenu">
+            <span>Please enter your warning message:</span>
+            <br /><br />
+            <input type="text" id="warningmessage" title="Enter Warning Message Here" name="warning"
+              autocomplete="on" />
+            <button class="button" id="warningGenerate">Generate</button>
+          </div>
+
+          <!-- Error tab -->
+          <div id="errorr" class="subMenu">
+            <span>Please enter your error message:</span>
+            <br /><br />
+            <input type="text" id="errormessage" title="Enter Error Message Here" name="warning" />
+            <button class="button" id="errorGenerate">Generate</button>
+          </div>
+        </div>
+      </ul>
+    </div>
+    <div class="right">
+      <section class="output">
+        <div class="tooltip">
+          <div class="action-button">
+            <label for="output">Output</label>
+            <label type="reset" class="button" id="reset" style="background-color: #a3a4a6"
+              onclick="javascript:eraseText();">Reset</label>
+          </div>
+
+          <button type="submit" class="button" id="endLoop">End Loop</button>
+        </div>
+        <div class="feature">
+          <textarea rows="100" name="description" id="generateCode" disabled>
+            </textarea>
+        </div>
+
+
+        <div class="reset-btn">
+          <button class="button tooltip-explanation" onclick="createItem()" id="copy">
+            <label class="tooltiptext" id="myTooltip">Copy to clipboard</label>
+            Copy text
+          </button>
+
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <footer>
+    <img class="logo" src="/images/logo.png" alt="MAN" />
+  </footer>
+
+  <script>
+    //checkbox all selects
+    document.getElementById("PAll").onclick = function () {
+      var checkboxes = document.getElementsByName("Pcheck");
+      for (var checkbox of checkboxes) {
+        checkbox.checked = this.checked;
+      }
+    };
+    //-------------------------------------
+    document.getElementById("BAll").onclick = function () {
+      var checkboxes = document.getElementsByName("Bcheck");
+      for (var checkbox of checkboxes) {
+        checkbox.checked = this.checked;
+      }
+    };
+    //-------------------------------------
+    document.getElementById("RAll").onclick = function () {
+      var checkboxes = document.getElementsByName("Rcheck");
+      for (var checkbox of checkboxes) {
+        checkbox.checked = this.checked;
+      }
+    };
+    //-------------------------------------
+    document.getElementById("aaaa").onclick = function () {
+      document.getElementsById("containsId").display = flex;
+    };
+    function eraseText() {
+      window.location.reload();
+    }
+  </script>
+</body>
+
+</html>
