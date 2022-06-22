@@ -26,18 +26,18 @@ window.onload = function () {
     $("#tabs").tabShowContent();
   });
 
-  //GFZ Acordion
-  $("#pLabel").click(function () {
-    $("#ulPLabel").toggle();
-  });
+  // //GFZ Acordion
+  // $("#pLabel").click(function () {
+  //   $("#ulPLabel").toggle();
+  // });
 
-  $("#bLabel").click(function () {
-    $("#ulBLabel").toggle();
-  });
+  // $("#bLabel").click(function () {
+  //   $("#ulBLabel").toggle();
+  // });
 
-  $("#rLabel").click(function () {
-    $("#ulRLabel").toggle();
-  });
+  // $("#rLabel").click(function () {
+  //   $("#ulRLabel").toggle();
+  // });
 
   var bracketCount = 0;
   var vkgrnum = 0;
@@ -60,28 +60,42 @@ window.onload = function () {
     }
   });
 
-  //GFZ
-  $("#generate").click(function () {
-    $.fn.addTabs(bracketCount);
-    $("#generateCode").append(
-      'if(Vehicle.BAND_TMF=="' +
-        $("input[type=checkbox][class=subOption]:checked")
-          .map(function () {
-            return this.value;
-          })
-          .get()
-          .join(",") +
-        //     + '" || Vehicle.BAND_TMF=="' +
-        //     $("input[type=checkbox][class=subOption]:checked")
-        //         .map(function () {
-        //             return this.value;
-        //         })
-        //         .get().join(",")
-        //         +
-        '")\n' +
-        "return;\n"
-    );
-  });
+  // //GFZ
+  // $("#generate").click(function () {
+  //   $.fn.addTabs(bracketCount);
+  //   $("#generateCode").append(
+  //     'if(Vehicle.BAND_TMF=="' +
+  //       $("input[type=checkbox][class=subOption]:checked")
+  //         .map(function () {
+  //           return this.value;
+  //         })
+  //         .get()
+  //         .join(",") +
+  //       //     + '" || Vehicle.BAND_TMF=="' +
+  //       //     $("input[type=checkbox][class=subOption]:checked")
+  //       //         .map(function () {
+  //       //             return this.value;
+  //       //         })
+  //       //         .get().join(",")
+  //       //         +
+  //       '")\n' +
+  //       "return;\n"
+  //   );
+  // });
+
+    // Vehicle.BAND_TMF
+    $("#vehicleGenerate").click(function () {
+      $.fn.addTabs(bracketCount);
+  
+      var getBandCodes = $("#vehicleBandText").val();
+      var values = getBandCodes.split(/[\s,]+/g);
+      for (var i = 0; i < values.length; i++) {
+        values[i] = 'Vehicle.BAND_TMF=="' + values[i] + '"';
+      }
+      var finalBandCodes = values.join("||");
+  
+      $("#generateCode").append("if(" + finalBandCodes + ")\nreturn;\n");
+    });
 
   // VKGR
   $("#vkgrGenerate").click(function () {
@@ -247,17 +261,5 @@ window.onload = function () {
     bracketCount++;
   });
 
-  // Vehicle.BAND_TMF
-  $("#vehicleGenerate").click(function () {
-    $.fn.addTabs(bracketCount);
 
-    var getBandCodes = $("#vehicleBandText").val();
-    var values = getBandCodes.split(/[\s,]+/g);
-    for (var i = 0; i < values.length; i++) {
-      values[i] = 'Vehicle.BAND_TMF=="' + values[i] + '"';
-    }
-    var finalBandCodes = values.join("||");
-
-    $("#generateCode").append("if(" + finalBandCodes + ")\nreturn;\n");
-  });
 };

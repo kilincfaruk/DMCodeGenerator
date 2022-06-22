@@ -6,13 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Digital Memory Code Generator</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="/path/to/styles/default.min.css" />
-  <script src="/path/to/highlight.min.js"></script>
-  <script>
-    hljs.highlightAll();
-  </script>
 </head>
 
 <body>
@@ -46,9 +42,10 @@
           <!-- GFZ tab 
                         Faruk7.06.2022-->
           <div id="gfz" class="subMenu">
-            <ul class="floatLeft">
-              <span>Please select GFZ type:</span>
-              <br /><br />
+            <span>Please enter GFZ type:</span>
+            <br /><br />
+            <!-- <ul class="floatLeft">
+              
               <li>
                 <input type="checkbox" title=" Check This For Select Everyone" id="PAll" /><label id="pLabel"
                   for="option">P <i class="arrow down"></i></label>
@@ -146,15 +143,16 @@
                 </ul>
               </li>
               <br /><br />
-            </ul>
+            </ul> -->
 
-            <input type="text" id="vehicleBandText" title="write your text" placeholder="FH" name="description"
-              value="" />
-            <button class="button" id="vehicleGenerate">Generate</button>
+            <input type="text" id="vehicleBandText"
+              title="If you want to enter more than one data, just leave a space between them" placeholder="FH WJ"
+              name="description" value="" />
+            <button class="button" id="vehicleGenerate" hidefocus="true" tabindex="-1">Generate</button>
 
-            <button type="submit" class="button" id="generate">
+            <!-- <button type="submit" class="button" id="generate">
               Generate
-            </button>
+            </button> -->
           </div>
 
           <!-- VKGR tab -->
@@ -288,11 +286,7 @@
             <input type="text" id="gfzPropertiesText" />
             <br /><br /><br />
 
-            <!-- Vehicle.BAND_TMF -->
-            <label><input type="radio" id="vehicleBand" name="vehicleTypeRadio" />Vehicle.BAND_TMF</label><br />
-
-            <input type="text" id="vehicleBandText" title="write your text" placeholder="FH" name="description"
-              value="" />
+        
             <button class="button" id="vehicleGenerate">Generate</button>
           </div>
 
