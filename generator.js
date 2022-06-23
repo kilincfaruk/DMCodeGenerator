@@ -84,7 +84,7 @@ window.onload = function () {
   // });
 
     // Vehicle.BAND_TMF
-    $("#vehicleGenerate").click(function () {
+    $("#gfzGenerate").click(function () {
       $.fn.addTabs(bracketCount);
   
       var getBandCodes = $("#vehicleBandText").val();
@@ -125,7 +125,7 @@ window.onload = function () {
       finalVehicleCodes = $.fn.multipleValues(getVehicleCodes);
       $.fn.addTabs(bracketCount);
       $("#generateCode").append(
-        "AntListVkgr vkgr" +
+        "AntList&#60;Vkgr&#62; vkgr" +
           vkgrnum +
           " = Vkgr.CenterCode.Gets(" +
           finalVehicleCodes +
@@ -243,20 +243,16 @@ window.onload = function () {
     bracketCount++;
   });
 
-  $("#propertyGenerate").click(function () {
+  $("#vehicleGenerate").click(function () {
     $.fn.addTabs(bracketCount);
-
-    var getPropertyCodes = $("#gfzPropertiesText").val();
-    finalPropertyCodes = $.fn.multipleValues(getPropertyCodes);
-
+    var getCodes = $("#gfzPropertiesText").val();
+    finalCodes = $.fn.multipleValues(getCodes);
     $("#generateCode").append(
       "if(Vehicle.Properties.GFZ." +
         $("input[name=properties]:checked").val() +
         "(" +
         $("#gfzProperties").val() +
-        ") == " +
-        finalPropertyCodes +
-        ")"
+        ") == "+ finalCodes+ "{\n"
     );
     bracketCount++;
   });

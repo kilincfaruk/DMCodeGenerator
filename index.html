@@ -31,7 +31,7 @@
             <li><a href="#vkgr" class="btn">Vkgr</a></li>
             <li><a href="#ksw" class="btn">Ksw</a></li>
             <li><a href="#code" class="btn">Code</a></li>
-            <li><a href="#vcode" class="btn">Vehicle Code</a></li>
+            <li><a href="#vcode" class="btn">Vehicle Properties</a></li>
             <li>
               <a href="#warningg" class="btn" id="warning">Warning Message</a>
             </li>
@@ -148,7 +148,7 @@
             <input type="text" id="vehicleBandText"
               title="If you want to enter more than one data, just leave a space between them" placeholder="FH WJ"
               name="description" value="" />
-            <button class="button" id="vehicleGenerate" hidefocus="true" tabindex="-1">Generate</button>
+            <button class="button" id="gfzGenerate" hidefocus="true" tabindex="-1">Generate</button>
 
             <!-- <button type="submit" class="button" id="generate">
               Generate
@@ -190,17 +190,35 @@
             <input type="text" id="textArea" title="Example: xxxxxxx" name="description" value=""
               placeholder="83#5370B272" />
             <br /><br />
+
             <label>
-              <input type="radio" id="centerCode" name="vkgrselector" value="CenterCode" />Center Code</label><br />
+              <input type="radio" id="centerCode" name="vkgrselector" value="CenterCode" />Center Code (AntList)
+            </label><br />
             <input type="text" id="centerTextArea" title="Example: xxxxxxx" name="centerDescription" value=""
               placeholder="#5380" />
             <br /><br />
-            <label><input type="radio" id="serialVkgrIsEmpty" title="if(serialVkgr.IsEmpty())" name="tf-btn"
-                value="serialVkgr" />serialVkgr.IsEmpty())</label>
+
+            <label><input type="radio" name="vkgrselector" id="serialVkgrIsEmpty" title="if(serialVkgr.IsEmpty())"
+                name="tf-btn" value="serialVkgr" />serialVkgr.IsEmpty())</label>
             <br /><br />
-            <label><input type="radio" id="serialVkgrIsNull" title="if(serialVkgr.IsNull())" name="tf-btn"
-                value="serialVkgr" />serialVkgr.IsNull())</label>
+            <label><input type="radio" name="vkgrselector" id="serialVkgrIsNull" title="if(serialVkgr.IsNull())"
+                name="tf-btn" value="serialVkgr" />serialVkgr.IsNull())</label>
             <br /><br />
+            <!-- <label><input type="radio" name="vkgrselector" id="vkgrs.IsMatch" title="if vkgrs. IsMatch (" name="tf-btn"
+                value="serialVkgr" />vkgrs.IsMatch</label>
+            <br /><br />
+            <ul class="floatLeft">
+              <li>
+                <label><input type="checkbox" id="false" name="tf-btn" value="true" />False</label>
+                <br /><br />
+              </li>
+              <li>
+                <input type="text" id="textArea" title="Example: xxxxxxx" name="description" value=""
+                  placeholder="83#5370B272" /><br /><br />
+              </li>
+              
+            </ul> 
+            <br />-->
             <button class="button" id="vkgrGenerate">Generate</button>
           </div>
 
@@ -266,11 +284,10 @@
 
           <!-- Vehicle Code tab -->
           <div id="vcode" class="subMenu">
-            <label>Classes</label>
-            <br /><br />
             <!-- Vehicle.Properties.GFZ -->
-            <label><input type="radio" id="vehicleProperties" title="if(Vehicle.BAND_TMF==(&quot &quot"
-                name="vehicleTypeRadio" />Vehicle.Properties.GFZ</label>
+            <!-- <label><input type="radio" id="vehicleProperties" title="if(Vehicle.BAND_TMF==(&quot &quot"
+                name="vehicleTypeRadio" />Vehicle.Properties.GFZ</label> -->
+            <label>Vehicle.Properties.GFZ</label>
             <ul>
               <li>
                 <label><input type="radio" value="Left" name="properties" />Left</label>
@@ -283,10 +300,10 @@
             <input type="number" placeholder="Left(3) || Right(3) " id="gfzProperties" />
             <br /><br />
             <span>Search Keys:</span><br />
-            <input type="text" id="gfzPropertiesText" />
+            <input type="text" id="gfzPropertiesText" name="description" value="" />
             <br /><br /><br />
 
-        
+
             <button class="button" id="vehicleGenerate">Generate</button>
           </div>
 

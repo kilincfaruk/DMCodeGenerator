@@ -340,6 +340,10 @@ li {
   justify-content: space-between;
   align-items: center;
 }
+.tooltip button{
+ margin-left: 10px;
+
+}
 
 .action-button>.button {
   margin-left: 20px;

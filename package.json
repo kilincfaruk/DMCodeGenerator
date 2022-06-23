@@ -2,6 +2,7 @@
   "dependencies": {
     "@github/hotkey": "^2.0.0",
     "highlight.js": "^11.5.1",
-    "prismjs": "^1.28.0"
+    "prismjs": "^1.28.0",
+    "surge": "^0.23.1"
   }
 }
