@@ -98,6 +98,7 @@ h2 {
   border: 0.5px solid transparent;
   border-radius: 10px;
   background-color: #e40444;
+ text-align: center;
 }
 
 .btn::after {
@@ -140,6 +141,7 @@ h2 {
   padding: 20px;
   margin-left: 10px;
   display: none;
+  
 }
 
 .subMenu a {
@@ -381,6 +383,7 @@ footer {
   outline: #450718 6px ridge;
   background: #750222;
   color: white;
+  
 }
 
 .menu-tabs li:hover a {
