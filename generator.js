@@ -22,22 +22,8 @@ window.onload = function () {
         active: false,
       });
     });
-
     $("#tabs").tabShowContent();
   });
-
-  // //GFZ Acordion
-  // $("#pLabel").click(function () {
-  //   $("#ulPLabel").toggle();
-  // });
-
-  // $("#bLabel").click(function () {
-  //   $("#ulBLabel").toggle();
-  // });
-
-  // $("#rLabel").click(function () {
-  //   $("#ulRLabel").toggle();
-  // });
 
   var bracketCount = 0;
   var vkgrnum = 0;
@@ -45,9 +31,6 @@ window.onload = function () {
 
   //End Loop --- This is for add end brackets
   $("#endLoop").click(function () {
-    // for(var i = bracketCount; i < 0; i--){
-    //     $("#generateCode").append("&nbsp;");
-    // }
     for (var i = bracketCount; i > 0; i--) {
       spaceCount = i - 1;
       while (spaceCount > 0) {
@@ -60,42 +43,19 @@ window.onload = function () {
     }
   });
 
-  // //GFZ
-  // $("#generate").click(function () {
-  //   $.fn.addTabs(bracketCount);
-  //   $("#generateCode").append(
-  //     'if(Vehicle.BAND_TMF=="' +
-  //       $("input[type=checkbox][class=subOption]:checked")
-  //         .map(function () {
-  //           return this.value;
-  //         })
-  //         .get()
-  //         .join(",") +
-  //       //     + '" || Vehicle.BAND_TMF=="' +
-  //       //     $("input[type=checkbox][class=subOption]:checked")
-  //       //         .map(function () {
-  //       //             return this.value;
-  //       //         })
-  //       //         .get().join(",")
-  //       //         +
-  //       '")\n' +
-  //       "return;\n"
-  //   );
-  // });
+  // Vehicle.BAND_TMF
+  $("#gfzGenerate").click(function () {
+    $.fn.addTabs(bracketCount);
 
-    // Vehicle.BAND_TMF
-    $("#gfzGenerate").click(function () {
-      $.fn.addTabs(bracketCount);
-  
-      var getBandCodes = $("#vehicleBandText").val();
-      var values = getBandCodes.split(/[\s,]+/g);
-      for (var i = 0; i < values.length; i++) {
-        values[i] = 'Vehicle.BAND_TMF=="' + values[i] + '"';
-      }
-      var finalBandCodes = values.join("||");
-  
-      $("#generateCode").append("if(" + finalBandCodes + ")\nreturn;\n");
-    });
+    var getBandCodes = $("#vehicleBandText").val();
+    var values = getBandCodes.split(/[\s,]+/g);
+    for (var i = 0; i < values.length; i++) {
+      values[i] = 'Vehicle.BAND_TMF=="' + values[i] + '"';
+    }
+    var finalBandCodes = values.join("||");
+
+    $("#generateCode").append("if(" + finalBandCodes + ")\nreturn;\n");
+  });
 
   // VKGR
   $("#vkgrGenerate").click(function () {
@@ -160,8 +120,10 @@ window.onload = function () {
   //error
   $("#errorGenerate").click(function () {
     $.fn.addTabs(bracketCount);
-    $("#generateCode").append('Error("' + $("#errormessage").val() + '");\n');
-    // bracketCount++;
+    $("#generateCode").append(
+      'Error("' + $("#errormessage").val() + '");\n}\n'
+    );
+    bracketCount--;
   });
 
   //copytoclipboard
@@ -243,6 +205,8 @@ window.onload = function () {
     bracketCount++;
   });
 
+  // Vehicle.Properties.GFZ
+
   $("#vehicleGenerate").click(function () {
     $.fn.addTabs(bracketCount);
     var getCodes = $("#gfzPropertiesText").val();
@@ -252,10 +216,26 @@ window.onload = function () {
         $("input[name=properties]:checked").val() +
         "(" +
         $("#gfzProperties").val() +
-        ") == "+ finalCodes+ "{\n"
+        ") == " +
+        finalCodes +
+        "){\n"
     );
     bracketCount++;
   });
 
-
+  // return generate button
+  $("#returnGenerate").click(function () {
+    $.fn.addTabs(bracketCount);
+    var getCodes = $("#gfzPropertiesText").val();
+    finalCodes = $.fn.multipleValues(getCodes);
+    $("#generateCode").append(
+      "if(Vehicle.Properties.GFZ." +
+        $("input[name=properties]:checked").val() +
+        "(" +
+        $("#gfzProperties").val() +
+        ") == " +
+        finalCodes +
+        ")\nreturn;\n"
+    );
+  });
 };
