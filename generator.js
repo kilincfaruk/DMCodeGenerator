@@ -66,10 +66,10 @@ window.onload = function () {
       $.fn.addTabs(bracketCount);
       $("#generateCode").append(
         "if(Vkgr.Code." +
-          $("input[name=radio-btn]:checked").val() +
-          "(" +
-          finalVehicleCodes +
-          ")"
+        $("input[name=radio-btn]:checked").val() +
+        "(" +
+        finalVehicleCodes +
+        ")"
       );
       if ($("#false").prop("checked")) {
         $("#generateCode").append("==false){\n");
@@ -86,10 +86,10 @@ window.onload = function () {
       $.fn.addTabs(bracketCount);
       $("#generateCode").append(
         "AntList&#60;Vkgr&#62; vkgr" +
-          vkgrnum +
-          " = Vkgr.CenterCode.Gets(" +
-          finalVehicleCodes +
-          ");\n"
+        vkgrnum +
+        " = Vkgr.CenterCode.Gets(" +
+        finalVehicleCodes +
+        ");\n"
       );
       vkgrnum++;
     }
@@ -121,7 +121,7 @@ window.onload = function () {
   $("#errorGenerate").click(function () {
     $.fn.addTabs(bracketCount);
     $("#generateCode").append(
-      'Error("' + $("#errormessage").val() + '");\n}\n'
+      'Error("' + $("#errormessage").val() + '");\n'
     );
     bracketCount--;
   });
@@ -135,8 +135,10 @@ window.onload = function () {
     sampleTextarea.select(); //select textarea contenrs
     document.execCommand("copy");
     document.body.removeChild(sampleTextarea);
-    $("#myTooltip").html("Copied");
+
+    this.href = "data:text/plain;charset=UTF-8," + encodeURIComponent(text);
   });
+
 
   // Ksw
   $("#kswGenerate").click(function () {
@@ -157,10 +159,10 @@ window.onload = function () {
       // kswText
       $("#generateCode").append(
         "if(Ksw.Code.Gets(" +
-          finalKswCodes +
-          ').IsMatchFull(@"' +
-          kswText +
-          '")'
+        finalKswCodes +
+        ').IsMatchFull(@"' +
+        kswText +
+        '")'
       );
 
       if ($("#ksw-false").prop("checked")) {
@@ -179,10 +181,10 @@ window.onload = function () {
 
       $("#generateCode").append(
         'if(Ksw.Text.IsMatch(@"' +
-          kswText +
-          '")==' +
-          $("input[name=kswtf-btn]:checked").val() +
-          "){\n"
+        kswText +
+        '")==' +
+        $("input[name=kswtf-btn]:checked").val() +
+        "){\n"
       );
     } else {
       alert("Please Select KSW Type!");
@@ -197,15 +199,16 @@ window.onload = function () {
     $.fn.addTabs(bracketCount);
     $("#generateCode").append(
       "if(Code." +
-        $("input[name=coderadio]:checked").val() +
-        "(" +
-        finalCodes +
-        "){\n"
+      $("input[name=coderadio]:checked").val() +
+      "(" +
+      finalCodes +
+      "){\n"
     );
     bracketCount++;
   });
 
   // Vehicle.Properties.GFZ
+  
 
   $("#vehicleGenerate").click(function () {
     $.fn.addTabs(bracketCount);
@@ -213,12 +216,12 @@ window.onload = function () {
     finalCodes = $.fn.multipleValues(getCodes);
     $("#generateCode").append(
       "if(Vehicle.Properties.GFZ." +
-        $("input[name=properties]:checked").val() +
-        "(" +
-        $("#gfzProperties").val() +
-        ") == " +
-        finalCodes +
-        "){\n"
+      $("input[name=properties]:checked").val() +
+      "(" +
+      $("#gfzProperties").val() +
+      ") == " +
+      finalCodes +
+      "){\n"
     );
     bracketCount++;
   });
@@ -230,12 +233,33 @@ window.onload = function () {
     finalCodes = $.fn.multipleValues(getCodes);
     $("#generateCode").append(
       "if(Vehicle.Properties.GFZ." +
-        $("input[name=properties]:checked").val() +
-        "(" +
-        $("#gfzProperties").val() +
-        ") == " +
-        finalCodes +
-        ")\nreturn;\n"
+      $("input[name=properties]:checked").val() +
+      "(" +
+      $("#gfzProperties").val() +
+      ") == " +
+      finalCodes +
+      ")\nreturn;\n"
     );
   });
 };
+
+$(function () {
+  var overlay = $('<div id="overlay"></div>');
+  overlay.show();
+  overlay.appendTo(document.body);
+  $('.popup').show();
+  $('.close').click(function () {
+    $('.popup').hide();
+    overlay.appendTo(document.body).remove();
+    return false;
+  });
+
+
+
+
+  $('.x').click(function () {
+    $('.popup').hide();
+    overlay.appendTo(document.body).remove();
+    return false;
+  });
+});

@@ -1,6 +1,6 @@
 body {
   font-family: "MANEurope", Helvetica, Roboto, Arial, sans-serif;
-  background: #303c49;
+  background: #303C49;
   margin-top: 50px;
   padding-top: 25px;
   
@@ -83,7 +83,7 @@ h2 {
 }
 
 .item {
-  border-top: 1px solid #70767d;
+  border-top: 1px solid rgb(175, 175, 175);
   overflow: hidden;
   color: #fff;
   background-color: #e40444;
@@ -97,7 +97,7 @@ h2 {
 .btn {
   display: block;
   padding: 15px 20px;
-  background-color: #a3a4a6;
+  background-color: rgb(175, 175, 175);
   color: #fff;
   position: relative;
   border: 0.5px solid transparent;
@@ -153,7 +153,7 @@ h2 {
   padding: 15px 20px;
   color: #fff;
   font-size: 14px;
-  border-bottom: 1px solid #70767d;
+  border-bottom: 1px solid rgb(175, 175, 175);
   position: relative;
   color: #fff;
 }
@@ -175,7 +175,7 @@ h2 {
   top: 0;
   opacity: 1;
   border-top: 24px solid transparent;
-  border-left: 11px solid #70767d;
+  border-left: 11px solid rgb(175, 175, 175);
   border-bottom: 24px solid transparent;
   color: #fff;
 }
@@ -208,22 +208,22 @@ h2 {
     linear,
     left top,
     left bottom,
-    from(#a3a4a6),
-    color-stop(50%, #a3a4a6),
-    color-stop(51%, #a3a4a6),
-    to(#a3a4a6)
+    from(rgb(175, 175, 175)),
+    color-stop(50%, rgb(175, 175, 175)),
+    color-stop(51%, rgb(175, 175, 175)),
+    to(rgb(175, 175, 175))
   );
   background: linear-gradient(
     to bottom,
-    #a3a4a6 0%,
-    #a3a4a6 50%,
-    #a3a4a6 51%,
-    #a3a4a6 100%
+    rgb(175, 175, 175) 0%,
+    rgb(175, 175, 175) 50%,
+    rgb(175, 175, 175) 51%,
+    rgb(175, 175, 175) 100%
   );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a3a4a6', endColorstr='#a3a4a6', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='rgb(175, 175, 175)', endColorstr='rgb(175, 175, 175)', GradientType=0);
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border-bottom: 1px solid #70767d;
+  border-bottom: 1px solid rgb(175, 175, 175);
   color: #fff;
 }
 
@@ -242,7 +242,7 @@ h2 {
 
 .button {
   padding: 10px 15px;
-  background-color: #a3a4a6;
+  background-color: rgb(175, 175, 175);
   color: #fff;
   border: none;
   margin-top: 10px;
@@ -254,15 +254,17 @@ h2 {
   margin-top: 1rem;
   width: 500px;
   color: #fff;
+  
 }
 
 .output label {
-  display: flexbox;
+  
   padding: 10px 10px;
   background-color: #e40444;
   color: #fff;
-  border-radius: 8px 8px 8px 8px;
-  margin-bottom: 10px;
+  border-radius:8px;
+  
+
 }
 
 textarea {
@@ -381,7 +383,7 @@ footer {
   display: flex;
   margin: 0 auto;
   width: 300px;
-  filter: drop-shadow(1px 1px 45px #a3a4a6);
+  filter: drop-shadow(1px 1px 45px rgb(175, 175, 175));
 }
 
 
