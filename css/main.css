@@ -109,7 +109,7 @@ h2 {
 .btn::after {
   display: block;
   padding: 15px 20px;
-  background-color: crimson;
+  background-color: #e40444;
   color: #fff;
   position: relative;
   border: 0.5px solid transparent;
@@ -257,14 +257,11 @@ h2 {
   
 }
 
-.output label {
-  
+.output label {  
   padding: 10px 10px;
   background-color: #e40444;
   color: #fff;
   border-radius:8px;
-  
-
 }
 
 textarea {
@@ -366,7 +363,6 @@ li {
 }
 
 .reset-btn button {
-  /* margin: 15px auto; */
   display: flex;
   padding: 12px 40px;
   font-size: 1em;
