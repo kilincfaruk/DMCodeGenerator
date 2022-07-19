@@ -15,6 +15,7 @@ $.fn.addTabs = function (bracketCount) {
 };
 
 window.onload = function () {
+  alert("Now you can write down if/else/elseif loops. \nYou can see the number of loops in 'End Loop' button.\nWhen 'End Loop' button click, app automatically put } for opened last loop.");
   // Menu Accordion
   $(document).ready(function () {
     $(function () {
