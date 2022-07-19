@@ -8,9 +8,10 @@ $.fn.multipleValues = function (getValues) {
 };
 
 $.fn.addTabs = function (bracketCount) {
-  for (var i = 0; i < bracketCount; i++) {
+  for (var i = 0; i < (bracketCount+1); i++) {
     $("#generateCode").append("&nbsp;");
   }
+  document.getElementById("bracketCount").innerHTML = (bracketCount+1);
 };
 
 window.onload = function () {
@@ -27,10 +28,12 @@ window.onload = function () {
 
   var bracketCount = 0;
   var vkgrnum = 0;
+  
   $("#generateCode").text("");
 
   //End Loop --- This is for add end brackets
   $("#endLoop").click(function () {
+    if(bracketCount>0){
     for (var i = bracketCount; i > 0; i--) {
       spaceCount = i - 1;
       while (spaceCount > 0) {
@@ -38,14 +41,21 @@ window.onload = function () {
         spaceCount--;
       }
       // $("#generateCode").append("&nbsp;");
-      $("#generateCode").append("}\n");
-      bracketCount--;
+     
+    } $("#generateCode").append("}\n");
+
+   
+    bracketCount--;
+    document.getElementById("bracketCount").innerHTML = (bracketCount);
+  }
+    else{
+      alert("There is no more loop end!")
     }
   });
 
   // Vehicle.BAND_TMF
   $("#gfzGenerate").click(function () {
-    $.fn.addTabs(bracketCount);
+    // $.fn.addTabs(bracketCount);
 
     var getBandCodes = $("#vehicleBandText").val();
     var values = getBandCodes.split(/[\s,]+/g);
@@ -56,7 +66,7 @@ window.onload = function () {
 
     $("#generateCode").append("if(" + finalBandCodes + ")\nreturn;\n");
   });
-
+  
   // VKGR
   $("#vkgrGenerate").click(function () {
     // vkgr code
@@ -64,8 +74,8 @@ window.onload = function () {
       var getVehicleCodes = $("#textArea").val();
       finalVehicleCodes = $.fn.multipleValues(getVehicleCodes);
       $.fn.addTabs(bracketCount);
-      $("#generateCode").append(
-        "if(Vkgr.Code." +
+      $("#generateCode").append($("input[name=vkgr-selector]:checked").val()+
+        "(Vkgr.Code." +
           $("input[name=radio-btn]:checked").val() +
           "(" +
           finalVehicleCodes +
@@ -96,7 +106,7 @@ window.onload = function () {
     //vkgr IsEmpty // IsNull
     else if ($("#serialVkgrIsEmpty").prop("checked")) {
       $.fn.addTabs(bracketCount);
-      $("#generateCode").append("if(serialVkgr.IsEmpty()){" + "\n");
+      $("#generateCode").append($("input[name=vkgr-selector]:checked").val()+"(serialVkgr.IsEmpty()){" + "\n");
 
       bracketCount++;
     } else if ($("#serialVkgrIsNull").prop("checked")) {
@@ -114,7 +124,6 @@ window.onload = function () {
     $("#generateCode").append(
       'Warning("' + $("#warningmessage").val() + '");\n'
     );
-    // bracketCount++;
   });
 
   //error
@@ -123,7 +132,6 @@ window.onload = function () {
     $("#generateCode").append(
       'Error("' + $("#errormessage").val() + '");\n'
     );
-  
   });
 
   //copytoclipboard
@@ -142,6 +150,7 @@ window.onload = function () {
   $("#kswGenerate").click(function () {
     // ksw code
     if ($("#code-button").prop("checked")) {
+      $.fn.addTabs(bracketCount);
       var kswText = $("#kswTextArea").val();
       for (var i = 0; i < bracketCount; i++) {
         $("#generateCode").append("&nbsp;");
@@ -155,8 +164,8 @@ window.onload = function () {
       }
 
       // kswText
-      $("#generateCode").append(
-        "if(Ksw.Code.Gets(" +
+      $("#generateCode").append($("input[name=ksw-selector]:checked").val()+
+        "(Ksw.Code.Gets(" +
           finalKswCodes +
           ').IsMatchFull(@"' +
           kswText +
@@ -172,13 +181,14 @@ window.onload = function () {
 
     // ksw text
     else if ($("#text-button").prop("checked")) {
+      $.fn.addTabs(bracketCount);
       var kswText = $("#kswTextArea").val();
       for (var i = 0; i < bracketCount; i++) {
         $("#generateCode").append("&nbsp;");
       }
 
-      $("#generateCode").append(
-        'if(Ksw.Text.IsMatch(@"' +
+      $("#generateCode").append($("input[name=ksw-selector]:checked").val()+
+        '(Ksw.Text.IsMatch(@"' +
           kswText +
           '")==' +
           $("input[name=kswtf-btn]:checked").val() +
@@ -195,8 +205,8 @@ window.onload = function () {
     var getCodes = $("#codeTextArea").val();
     finalCodes = $.fn.multipleValues(getCodes);
     $.fn.addTabs(bracketCount);
-    $("#generateCode").append(
-      "if(Code." +
+    $("#generateCode").append($("input[name=code-selector]:checked").val()+
+      "(Code." +
         $("input[name=coderadio]:checked").val() +
         "(" +
         finalCodes +
@@ -206,13 +216,12 @@ window.onload = function () {
   });
 
   // Vehicle.Properties.GFZ
-
   $("#vehicleGenerate").click(function () {
     $.fn.addTabs(bracketCount);
     var getCodes = $("#gfzPropertiesText").val();
     finalCodes = $.fn.multipleValues(getCodes);
-    $("#generateCode").append(
-      "if(Vehicle.Properties.GFZ." +
+    $("#generateCode").append($("input[name=vcode-selector]:checked").val()+
+      "(Vehicle.Properties.GFZ." +
         $("input[name=properties]:checked").val() +
         "(" +
         $("#gfzProperties").val() +
@@ -225,11 +234,11 @@ window.onload = function () {
 
   // return generate button
   $("#returnGenerate").click(function () {
-    $.fn.addTabs(bracketCount);
+    // $.fn.addTabs(bracketCount);
     var getCodes = $("#gfzPropertiesText").val();
     finalCodes = $.fn.multipleValues(getCodes);
-    $("#generateCode").append(
-      "if(Vehicle.Properties.GFZ." +
+    $("#generateCode").append($("input[name=vcode-selector]:checked").val()+
+      "(Vehicle.Properties.GFZ." +
         $("input[name=properties]:checked").val() +
         "(" +
         $("#gfzProperties").val() +
@@ -238,4 +247,6 @@ window.onload = function () {
         ")\nreturn;\n"
     );
   });
+ 
+ 
 };
