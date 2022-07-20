@@ -1,10 +1,8 @@
-
-
 body {
   font-family: "MANEurope", Helvetica, Roboto, Arial, sans-serif;
   background: #303C49;
-  margin-top: 50px;
-  padding-top: 25px;
+  margin-top: 0px;
+  padding-top: 5px;
 
 }
 
@@ -26,7 +24,7 @@ body {
     /* Safari, Android, iOS */
     url("../fonts/roboto-v29-latin-regular.svg#Roboto") format("svg");
   /* Legacy iOS 
-  */
+    */
 }
 
 a,
@@ -40,23 +38,24 @@ li {
   position: absolute;
   visibility: hidden;
   display: none;
+
 }
 
 .vkgr-radio-group label {
   display: inline-block;
   cursor: pointer;
-  padding:8px 14px;
+  padding: 8px 14px;
   font-size: 12px;
   transition: background 0.3s;
 }
 
 
 .vkgr-radio-group input[type=radio]:checked+label {
-  background: #303C49; 
+  background: #273057;
 }
 
-.vkgr-radio-group label:not(last-of-type){
-  border-right: 1px solid #273057;
+.vkgr-radio-group label:not(:last-of-type) {
+  border-right: 2px solid #273057;
 }
 
 .vkgr-radio-group {
@@ -64,8 +63,8 @@ li {
   margin-left: 7px;
   border-radius: 20px;
   overflow: hidden;
-  border:1px solid #273057;
-  
+  border: 2px solid #273057;
+
 }
 
 
@@ -79,27 +78,68 @@ li {
 .code-radio-group label {
   display: inline-block;
   cursor: pointer;
-  padding:8px 14px;
+  padding: 8px 14px;
   font-size: 12px;
   transition: background 0.3s;
 }
 
 
 .code-radio-group input[type=radio]:checked+label {
-  background: #303C49; 
+  background: #303C49;
 }
 
-.code-radio-group label:not(last-of-type){
+.code-radio-group label:not(last-of-type) {
   border-right: 1px solid #273057;
 }
 
 .code-radio-group {
   display: inline-block;
-  margin-left: 60px;
+  margin-left: 10px;
   border-radius: 20px;
   overflow: hidden;
-  border:1px solid #273057;
-  
+  border: 1px solid #273057;
+
+}
+
+.filter-switch label {
+  cursor: pointer;
+}
+
+.filter-switch-item input:checked+label {
+  color: inherit;
+}
+
+/* parts radio group */
+.parts-radio-group input[type=radio] {
+  position: absolute;
+  visibility: hidden;
+  display: none;
+}
+
+.parts-radio-group label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 8px 14px;
+  font-size: 12px;
+  transition: background 0.3s;
+}
+
+
+.parts-radio-group input[type=radio]:checked+label {
+  background: #303C49;
+}
+
+.parts-radio-group label:not(last-of-type) {
+  border-right: 1px solid #273057;
+}
+
+.parts-radio-group {
+  display: inline-block;
+  margin-left: 35px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #273057;
+
 }
 
 .filter-switch label {
@@ -120,17 +160,17 @@ li {
 .vcode-radio-group label {
   display: inline-block;
   cursor: pointer;
-  padding:8px 14px;
+  padding: 8px 14px;
   font-size: 12px;
   transition: background 0.3s;
 }
 
 
 .vcode-radio-group input[type=radio]:checked+label {
-  background: #303C49; 
+  background: #303C49;
 }
 
-.vcode-radio-group label:not(last-of-type){
+.vcode-radio-group label:not(last-of-type) {
   border-right: 1px solid #273057;
 }
 
@@ -139,8 +179,8 @@ li {
   margin-left: 12px;
   border-radius: 20px;
   overflow: hidden;
-  border:1px solid #273057;
-  
+  border: 1px solid #273057;
+
 }
 
 .filter-switch label {
@@ -162,17 +202,17 @@ li {
 .ksw-radio-group label {
   display: inline-block;
   cursor: pointer;
-  padding:8px 14px;
+  padding: 8px 14px;
   font-size: 12px;
   transition: background 0.3s;
 }
 
 
 .ksw-radio-group input[type=radio]:checked+label {
-  background: #303C49; 
+  background: #303C49;
 }
 
-.ksw-radio-group label:not(last-of-type){
+.ksw-radio-group label:not(last-of-type) {
   border-right: 1px solid #273057;
 }
 
@@ -181,8 +221,8 @@ li {
   margin-left: 7px;
   border-radius: 20px;
   overflow: hidden;
-  border:1px solid #273057;
-  
+  border: 1px solid #273057;
+
 }
 
 .filter-switch label {
@@ -192,6 +232,7 @@ li {
 .filter-switch-item input:checked+label {
   color: inherit;
 }
+
 .arrow {
   border: solid whitesmoke;
   border-width: 0 3px 3px 0;
@@ -423,10 +464,10 @@ h2 {
 textarea {
   margin-top: 15px;
   background-color: #fff;
-  height: 250px;
-  resize: none;
+  height: 350px;
+  /* resize: none; */
   border-radius: 8px;
-  width: 525px;
+  width: 600px;
   font-size: 10.5pt;
 }
 
@@ -491,7 +532,7 @@ li {
 }
 
 .right {
-  margin-left: 150px;
+  margin-left: 35px;
   position: center;
 }
 
@@ -529,7 +570,7 @@ li {
 footer {
   display: flex;
   bottom: 0;
-  margin-top: 50px;
+  margin-top: 1px;
 }
 
 .logo {
@@ -583,37 +624,55 @@ footer {
 
 #gfz.subMenu {
   position: absolute;
-  top: 23%;
+  top: 16%;
   left: 13%;
 }
 
 #vkgr.subMenu {
   position: absolute;
-  top: 29%;
+  top: 22%;
   left: 13%;
 }
 
 #ksw.subMenu {
   position: absolute;
-  top: 35%;
+  top: 28%;
   left: 13%;
 }
 
 #code.subMenu {
   position: absolute;
-  top: 41.7%;
+  top: 34%;
+  left: 13%;
+}
+
+#parts.subMenu{
+  position: absolute;
+  top: 40%;
+  left: 13%;
+}
+
+#checkadd.subMenu{
+  position: absolute;
+  top: 46.7%;
+  left: 13%;
+}
+
+#overrideadd.subMenu{
+  position: absolute;
+  top: 52%;
   left: 13%;
 }
 
 #vcode.subMenu {
   position: absolute;
-  top: 47.7%;
+  top: 58.7%;
   left: 13%;
 }
 
 #warningg.subMenu {
   position: absolute;
-  top: 53.5%;
+  top: 65%;
   left: 13%;
 
 }
@@ -621,6 +680,7 @@ footer {
 #errorr.subMenu {
   position: fixed;
   z-index: 1;
-  top: 59.5%;
+  top: 71%;
   left: 13%;
 }
+

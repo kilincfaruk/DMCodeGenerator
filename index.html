@@ -33,6 +33,9 @@
             <li><a href="#vkgr" class="btn">Vkgr</a></li>
             <li><a href="#ksw" class="btn">Ksw</a></li>
             <li><a href="#code" class="btn">Code</a></li>
+            <li><a href="#parts" class="btn">Parts</a></li>
+            <li><a href="#checkadd" class="btn">CheckValue / Add</a></li>
+            <li><a href="#overrideadd" class="btn">Override</a></li>
             <li><a href="#vcode" class="btn">Vehicle Properties</a></li>
             <li>
               <a href="#warningg" class="btn" id="warning">Warning Message</a>
@@ -62,11 +65,11 @@
 
           <div id="vkgr" class="subMenu">
             <div class="vkgr-radio-group">
-              <input type="radio" id="vkgr-if" name="vkgr-selector" value="if">
+              <input type="radio" id="vkgr-if" name="vkgr-selector" value="if" />
               <label for="vkgr-if">if</label>
-              <input type="radio" id="vkgr-else" name="vkgr-selector" value="else">
+              <input type="radio" id="vkgr-else" name="vkgr-selector" value="else" />
               <label for="vkgr-else">else</label>
-              <input type="radio" id="vkgr-elseif" name="vkgr-selector" value="elseif">
+              <input type="radio" id="vkgr-elseif" name="vkgr-selector" value="elseif" />
               <label for="vkgr-elseif">elseif</label>
             </div>
             <br />
@@ -97,7 +100,8 @@
 
             <span>
               If your statement false please
-              <br /> check this button: <br />
+              <br />
+              check this button: <br />
             </span>
             <label><input type="checkbox" id="false" name="tf-btn" value="true" />False</label>
             <br /><br />
@@ -125,11 +129,11 @@
           <!-- KSW tab -->
           <div id="ksw" class="subMenu">
             <div class="ksw-radio-group">
-              <input type="radio" id="ksw-if" name="ksw-selector" value="if">
+              <input type="radio" id="ksw-if" name="ksw-selector" value="if" />
               <label for="ksw-if">if</label>
-              <input type="radio" id="ksw-else" name="ksw-selector" value="else">
+              <input type="radio" id="ksw-else" name="ksw-selector" value="else" />
               <label for="ksw-else">else</label>
-              <input type="radio" id="ksw-elseif" name="ksw-selector" value="elseif">
+              <input type="radio" id="ksw-elseif" name="ksw-selector" value="elseif" />
               <label for="ksw-elseif">elseif</label>
             </div>
             <br /><br />
@@ -160,21 +164,22 @@
             </ul>
 
             <input type="text" id="kswTextArea" title="" placeholder="prosys.*box" name="description" value="" />
-            <br> <button class="button" id="kswGenerate">Generate</button>
+            <br />
+            <button class="button" id="kswGenerate">Generate</button>
           </div>
 
           <!-- Code tab -->
 
           <div id="code" class="subMenu">
             <div class="code-radio-group">
-              <input type="radio" id="code-if" name="code-selector" value="if">
+              <input type="radio" id="code-if" name="code-selector" value="if" />
               <label for="code-if">if</label>
-              <input type="radio" id="code-else" name="code-selector" value="else">
+              <input type="radio" id="code-else" name="code-selector" value="else" />
               <label for="code-else">else</label>
-              <input type="radio" id="code-elseif" name="code-selector" value="elseif">
+              <input type="radio" id="code-elseif" name="code-selector" value="elseif" />
               <label for="code-elseif">elseif</label>
             </div>
-            <br>
+            <br />
             <ul>
               <li>
                 <label><input type="radio" title="if(Code.Contains(" id="contains" name="coderadio"
@@ -200,17 +205,83 @@
             <button class="button" id="codeGenerate">Generate</button>
           </div>
 
+          <!-- Parts tab -->
+
+          <div id="parts" class="subMenu">
+            <div class="parts-radio-group">
+              <input type="radio" id="parts-if" name="parts-selector" value="if" />
+              <label for="parts-if">if</label>
+              <input type="radio" id="parts-else" name="parts-selector" value="else" />
+              <label for="parts-else">else</label>
+              <input type="radio" id="parts-elseif" name="parts-selector" value="elseif" />
+              <label for="parts-elseif">elseif</label>
+            </div>
+            <br />
+            <ul>
+              <li>
+                <label><input type="radio" title="if(Parts.Contains(" id="contains" name="partsradio"
+                    value="Contains" />Contains</label>
+              </li>
+              <li>
+                <label><input type="radio" title="if(Parts.ContainsAny(" id="contains" name="partsradio"
+                    value="ContainsAny" />Contains Any</label>
+              </li>
+              <li>
+                <label><input type="radio" title="if(Parts.NotContains(" id="contains" name="partsradio"
+                    value="NotContains" />Not Contains</label>
+              </li>
+              <li>
+                <label><input type="radio" title="if(Parts.NotContainsAny(" id="contains" name="partsradio"
+                    value="NotContainsAny" />
+                  Not Contains Any</label>
+              </li>
+            </ul>
+            <br /><br />
+            <input type="text" id="partsTextArea" title="Example: xxxxxxx" placeholder="526KD" name="description" />
+            <br /><br />
+            <button class="button" id="partsGenerate">Generate</button>
+          </div>
+
+          <!-- check/add -->
+          <div id="checkadd" class="subMenu">
+            <label>CheckValue: </label><br />
+            <input type="text" placeholder="33#07MVB047" id="checkvaluetext" value="" />
+            <br /><br />
+            <label>Add:</label><br />
+            <input type="text" placeholder="33#4H203700" id="addvaluetext" value="" />
+            <br /><br />
+            <button class="button" id="checkaddGenerate" style="margin-left: 5px">
+              Generate
+            </button>
+            <button class="button" id="finishcheckaddGenerate" style="margin-left: 5px">
+              Finish
+            </button>
+          </div>
+
+          <!-- overrideadd -->
+          <div id="overrideadd" class="subMenu">
+            <label> Click Generate for Override Code.</label>
+            <br><br>
+            <button class="button" id="overrideGenerate" hidefocus="true" tabindex="-1">
+              Generate
+            </button>
+
+            <!-- <button type="submit" class="button" id="generate">
+              Generate
+            </button> -->
+          </div>
           <!-- Vehicle Code tab -->
           <div id="vcode" class="subMenu">
             <div class="vcode-radio-group">
-              <input type="radio" id="vcode-if" name="vcode-selector" value="if">
+              <input type="radio" id="vcode-if" name="vcode-selector" value="if" />
               <label for="vcode-if">if</label>
-              <input type="radio" id="vcode-else" name="vcode-selector" value="else">
+              <input type="radio" id="vcode-else" name="vcode-selector" value="else" />
               <label for="vcode-else">else</label>
-              <input type="radio" id="vcode-elseif" name="vcode-selector" value="elseif">
+              <input type="radio" id="vcode-elseif" name="vcode-selector" value="elseif" />
               <label for="vcode-elseif">elseif</label>
             </div>
-            <br /> <br />
+            <br />
+            <br />
             <label>Vehicle.Properties.GFZ</label>
             <ul>
               <li>
@@ -259,24 +330,25 @@
         <div class="tooltip">
           <div class="action-button">
             <label for="output">Output</label>
-            <button class="button" id="reset" , style="background-color: #a3a4a6;"
-              onClick="window.location.reload();">Reset</button>
+            <button class="button" id="reset" , style="background-color: #a3a4a6" onClick="window.location.reload();">
+              Reset
+            </button>
           </div>
 
-          <button type="submit" class="button" id="endLoop" style=" margin-right:-30px">End (<span
-              id="bracketCount">0</span>) Loop</button>
+          <button type="submit" class="button" id="endLoop" style="margin-right: -30px">
+            End (<span id="bracketCount">0</span>) Loop
+          </button>
         </div>
         <div class="feature">
-          <textarea rows="100" name="description" id="generateCode" disabled>
+          <textarea rows="100" name="description" id="generateCode" disabled >
             </textarea>
         </div>
 
         <div class="reset-btn">
-          <button class="button tooltip-explanation" onclick="createItem()" style="margin-top: 28px;" id="copy">
+          <button class="button tooltip-explanation" onclick="createItem()" style="margin-top: 28px" id="copy">
             <label class="tooltiptext" id="myTooltip">Copy to clipboard</label>
             Copy text
           </button>
-
         </div>
       </section>
     </div>
