@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/main.css" />
   <link rel="shortcut icon" href="https://cdn.iconscout.com/icon/free/png-64/man-truck-3441617-2874386.png"
     type="image/x-icon" sizes="64x64" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -36,6 +37,7 @@
             <li><a href="#parts" class="btn">Parts</a></li>
             <li><a href="#checkadd" class="btn">CheckValue / Add</a></li>
             <li><a href="#overrideadd" class="btn">Override</a></li>
+            <li><a href="#stringbuilder" class="btn">StringBuilder</a></li>
             <li><a href="#vcode" class="btn">Vehicle Properties</a></li>
             <li>
               <a href="#warningg" class="btn" id="warning">Warning Message</a>
@@ -52,6 +54,7 @@
             <input type="text" id="vehicleBandText"
               title="If you want to enter more than one data, just leave a space between them" placeholder="FH WJ"
               name="description" value="" />
+            <br><br>
             <button class="button" id="gfzGenerate" hidefocus="true" tabindex="-1">
               Generate
             </button>
@@ -89,10 +92,10 @@
                 <label><input type="radio" title="if(Vkgr.Code.NotContains(" id="contains" name="radio-btn"
                     value="NotContains" />Not Contains</label>
               </li>
-              <li>
+              <!-- <li>
                 <label><input type="radio" title="if(Vkgr.Code.NotContainsAny(" id="contains" name="radio-btn"
                     value="NotContainsAny" />Not Contains Any</label>
-              </li>
+              </li> -->
             </ul>
             <br /><br />
             <br /><br />
@@ -148,7 +151,8 @@
             </ul>
             <input type="text" id="kswCode" title="Example: xxxxxxx" name="description" value="" placeholder="Vxxxx" />
             <br /><br />
-            <label><input type="radio" id="text-button" title="if(Ksw.Text.IsMatch(@"
+            <label>
+              <input type="radio" id="text-button" title="if(Ksw.Text.IsMatch(@"
                 name="ksw-btn" />Ksw.Text.IsMatch</label><br />
             <ul>
               <li>
@@ -164,7 +168,7 @@
             </ul>
 
             <input type="text" id="kswTextArea" title="" placeholder="prosys.*box" name="description" value="" />
-            <br />
+            <br /> <br>
             <button class="button" id="kswGenerate">Generate</button>
           </div>
 
@@ -193,11 +197,11 @@
                 <label><input type="radio" title="if(Code.NotContains(" id="contains" name="coderadio"
                     value="NotContains" />Not Contains</label>
               </li>
-              <li>
+              <!-- <li>
                 <label><input type="radio" title="if(Code.NotContainsAny(" id="contains" name="coderadio"
                     value="NotContainsAny" />
                   Not Contains Any</label>
-              </li>
+              </li> -->
             </ul>
             <br /><br />
             <input type="text" id="codeTextArea" title="Example: xxxxxxx" placeholder="526KD" name="description" />
@@ -230,11 +234,11 @@
                 <label><input type="radio" title="if(Parts.NotContains(" id="contains" name="partsradio"
                     value="NotContains" />Not Contains</label>
               </li>
-              <li>
+              <!-- <li>
                 <label><input type="radio" title="if(Parts.NotContainsAny(" id="contains" name="partsradio"
                     value="NotContainsAny" />
                   Not Contains Any</label>
-              </li>
+              </li> -->
             </ul>
             <br /><br />
             <input type="text" id="partsTextArea" title="Example: xxxxxxx" placeholder="526KD" name="description" />
@@ -265,11 +269,40 @@
             <button class="button" id="overrideGenerate" hidefocus="true" tabindex="-1">
               Generate
             </button>
-
-            <!-- <button type="submit" class="button" id="generate">
-              Generate
-            </button> -->
           </div>
+
+          <!-- StringBuilder -->
+          <div id="stringbuilder" class="subMenu">
+            <label> Click Generate for StringBuilder Code.</label>
+            <br><br>
+            <label>sb.append: </label><br />
+            <input type="text" id="sbappendtext" value="" />
+            <br><br>
+            <button class="button" id="stringbuilderGenerate" hidefocus="true" tabindex="-1">
+              Generate
+            </button>
+            <br><br>
+            <label class="toggleSwitch nolabel" onclick="">
+              <input type="checkbox" id="errorwarningtoggle" class="errorwarningtoggle"  />
+              <a></a>
+              <span>
+                <span class="left-span">Error</span>
+                <span class="right-span">Warning</span>
+              </span>											
+            </label>
+            <br>
+            <button class="button" id="sbappendGenerate" hidefocus="true" tabindex="-1">
+              Generate
+            </button>
+            <br><br>
+            <i class="fa fa-info-circle" id="infoicon" style="font-size:14px"> </i><br>
+            <label for="infoicon" class="infoicon">
+              First click on Generate for <br>"StringBuilder sb = new
+              StringBuilder();"<br> the following clicks are for sb.Append
+            </label>
+         
+          </div>
+
           <!-- Vehicle Code tab -->
           <div id="vcode" class="subMenu">
             <div class="vcode-radio-group">
@@ -291,7 +324,7 @@
                 <label><input type="radio" value="Right" name="properties" />Right</label>
               </li>
             </ul>
-            <span>How Many:</span><br />
+            <span>How Many Digit:</span><br />
             <input type="number" placeholder="Left(3) || Right(3) " id="gfzProperties" />
             <br /><br />
             <span>Search Keys:</span><br />
@@ -309,9 +342,10 @@
           <!-- Warning tab -->
           <div id="warningg" class="subMenu">
             <span>Please enter your warning message:</span>
-            <br /><br />
+            <br /><br>
             <input type="text" id="warningmessage" title="Enter Warning Message Here" name="warning"
               autocomplete="on" />
+            <br><br>
             <button class="button" id="warningGenerate">Generate</button>
           </div>
 
@@ -320,7 +354,7 @@
             <span>Please enter your error message:</span>
             <br /><br />
             <input type="text" id="errormessage" title="Enter Error Message Here" name="warning" />
-            <button class="button" id="errorGenerate">Generate</button>
+            <br><br><button class="button" id="errorGenerate">Generate</button>
           </div>
         </div>
       </ul>
@@ -335,13 +369,14 @@
             </button>
           </div>
 
-          <button type="submit" class="button" id="endLoop" style="margin-right: -30px">
+          <button type="submit" class="button" id="endLoop">
             End (<span id="bracketCount">0</span>) Loop
           </button>
         </div>
         <div class="feature">
-          <textarea rows="100" name="description" id="generateCode" disabled >
+          <textarea rows="100" name="description" id="generateCode" disabled>
             </textarea>
+          <img class="logo" src="/images/logo.png" alt="MAN" />
         </div>
 
         <div class="reset-btn">
@@ -355,7 +390,7 @@
   </div>
 
   <footer>
-    <img class="logo" src="/images/logo.png" alt="MAN" />
+
   </footer>
 </body>
 

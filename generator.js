@@ -7,6 +7,15 @@ $.fn.multipleValues = function (getValues) {
   return finalValues;
 };
 
+$.fn.multipleValues2 = function (getValues) {
+  var values = getValues.split(/[\s,]+/g);
+  for (var i = 0; i < values.length; i++) {
+    values[i] = '"' + values[i] + '"';
+  }
+  var finalValues2 = values.join("||");
+  return finalValues2;
+};
+
 $.fn.addTabs = function (bracketCount) {
   for (var i = 0; i < (bracketCount + 1); i++) {
     $("#generateCode").append("&nbsp;");
@@ -53,11 +62,13 @@ window.onload = function () {
       alert("There is no more loop end!")
     }
   });
+  
+
 
   // Vehicle.BAND_TMF
   $("#gfzGenerate").click(function () {
     // $.fn.addTabs(bracketCount);
-
+    const vehicleBandTextclear = document.getElementById('vehicleBandText');
     var getBandCodes = $("#vehicleBandText").val();
     var values = getBandCodes.split(/[\s,]+/g);
     for (var i = 0; i < values.length; i++) {
@@ -66,11 +77,14 @@ window.onload = function () {
     var finalBandCodes = values.join("||");
 
     $("#generateCode").append("if(" + finalBandCodes + ")\nreturn;\n");
+    vehicleBandTextclear.value = '';
   });
 
   // VKGR
   $("#vkgrGenerate").click(function () {
     // vkgr code
+    const textAreaclear = document.getElementById('textArea');
+    const centerTextAreaclear = document.getElementById('centerTextArea');
     if ($("#containstype").prop("checked")) {
       var getVehicleCodes = $("#textArea").val();
       finalVehicleCodes = $.fn.multipleValues(getVehicleCodes);
@@ -117,6 +131,8 @@ window.onload = function () {
     } else {
       alert("Please Select VKGR Type!");
     }
+    textAreaclear.value = '';
+    centerTextAreaclear.value = '';
   });
 
 
@@ -124,17 +140,22 @@ window.onload = function () {
   //warning
   $("#warningGenerate").click(function () {
     // $.fn.addTabs(bracketCount);
+    const warningmessageclear = document.getElementById('warningmessage');
     $("#generateCode").append(
       'Warning("' + $("#warningmessage").val() + '");\n'
     );
+    warningmessageclear.value = '';
   });
 
   //error
   $("#errorGenerate").click(function () {
-    $.fn.addTabs(bracketCount);
+    const errormessageclear = document.getElementById('errormessage');
+      
+    // $.fn.addTabs(bracketCount);
     $("#generateCode").append(
       'Error("' + $("#errormessage").val() + '");\n'
     );
+    errormessageclear.value = '';
   });
 
   //copytoclipboard
@@ -152,9 +173,12 @@ window.onload = function () {
   // Ksw
   $("#kswGenerate").click(function () {
     // ksw code
+    const kswTextAreaclear = document.getElementById('kswTextArea');
+    const kswCodeclear = document.getElementById('kswCode');
     if ($("#code-button").prop("checked")) {
       $.fn.addTabs(bracketCount);
       var kswText = $("#kswTextArea").val();
+      kswText3 = $.fn.multipleValues2(kswText);
       for (var i = 0; i < bracketCount; i++) {
         $("#generateCode").append("&nbsp;");
       }
@@ -171,9 +195,12 @@ window.onload = function () {
         "(Ksw.Code.Gets(" +
         finalKswCodes +
         ').IsMatchFull(@"' +
-        kswText +
+        kswText3 +
         '")'
       );
+
+
+
 
       if ($("#ksw-false").prop("checked")) {
         $("#generateCode").append("==false){\n");
@@ -185,14 +212,14 @@ window.onload = function () {
     // ksw text
     else if ($("#text-button").prop("checked")) {
       $.fn.addTabs(bracketCount);
-      var kswText = $("#kswTextArea").val();
+
       for (var i = 0; i < bracketCount; i++) {
         $("#generateCode").append("&nbsp;");
       }
 
       $("#generateCode").append($("input[name=ksw-selector]:checked").val() +
         '(Ksw.Text.IsMatch(@"' +
-        kswText +
+        kswText3 +
         '")==' +
         $("input[name=kswtf-btn]:checked").val() +
         "){\n"
@@ -200,12 +227,15 @@ window.onload = function () {
     } else {
       alert("Please Select KSW Type!");
     }
+    kswTextAreaclear.value = '';
+    kswCodeclear.value = '';
     bracketCount++;
   });
 
   // CODE.Contains....()
   $("#codeGenerate").click(function () {
     var getCodes = $("#codeTextArea").val();
+    const codeTextAreaclear = document.getElementById('codeTextArea');
     finalCodes = $.fn.multipleValues(getCodes);
     $.fn.addTabs(bracketCount);
     $("#generateCode").append($("input[name=code-selector]:checked").val() +
@@ -215,10 +245,12 @@ window.onload = function () {
       finalCodes +
       ")){\n"
     );
+    codeTextAreaclear.value = '';
     bracketCount++;
   });
   // Parts.Contains....()
   $("#partsGenerate").click(function () {
+    const partsTextAreaclear = document.getElementById('partsTextArea');
     var getCodes = $("#partsTextArea").val();
     finalCodes = $.fn.multipleValues(getCodes);
     $.fn.addTabs(bracketCount);
@@ -227,15 +259,19 @@ window.onload = function () {
       $("input[name=partsradio]:checked").val() +
       "(" +
       finalCodes +
-      "){\n"
+      ")){\n"
     );
+    partsTextAreaclear.value = '';
     bracketCount++;
   });
 
   // Vehicle.Properties.GFZ
   $("#vehicleGenerate").click(function () {
     $.fn.addTabs(bracketCount);
-    var getCodes = $("#gfzPropertiesText").val();
+    var getCodes = $("#gfzPropertiesText").val(); 
+    const gfzPropertiesclear = document.getElementById('gfzProperties');
+    const gfzPropertiestextclear = document.getElementById('gfzPropertiesText');
+    
     finalCodes = $.fn.multipleValues(getCodes);
     $("#generateCode").append($("input[name=vcode-selector]:checked").val() +
       "(Vehicle.Properties.GFZ." +
@@ -246,6 +282,8 @@ window.onload = function () {
       finalCodes +
       "){\n"
     );
+    gfzPropertiesclear.value = '';
+    gfzPropertiestextclear.value = '';
     bracketCount++;
   });
 
@@ -346,5 +384,39 @@ window.onload = function () {
     );
   });
 
+  var stringbuildercounter = 0;
+  $("#stringbuilderGenerate").click(function () {
+    const sbappendtextclear = document.getElementById('sbappendtext');
+    var getCodes = $("#sbappendtext").val();
+    if (stringbuildercounter < 1) {
+      $("#generateCode").append(
+        'StringBuilder sb = new StringBuilder();\n'
+      );
+      stringbuildercounter++;
+  
+    }
+    else {
+      $("#generateCode").append(
+        'sb.Append ("' + getCodes + '");\n'
+      );
+      stringbuildercounter++;
+      sbappendtextclear.value = '';
+    }
+
+  });
+  // sbappendgenerate
+  $("#sbappendGenerate").click(function () {
+    var checkBox = document.getElementById("errorwarningtoggle");
+    if (checkBox.checked == true){
+      $("#generateCode").append(
+        'if (sb.Length &gt; 0)\nWarning(sb);\n\n'
+        );
+    } else {
+      $("#generateCode").append(
+        'if (sb.Length &gt; 0)\nError(sb);\n\n'
+        );
+    }
+    
+  });
 
 };
