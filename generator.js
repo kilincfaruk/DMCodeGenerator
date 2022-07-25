@@ -10,11 +10,12 @@ $.fn.multipleValues = function (getValues) {
 $.fn.multipleValues2 = function (getValues) {
   var values = getValues.split(/[\s,]+/g);
   for (var i = 0; i < values.length; i++) {
-    values[i] = '"' + values[i] + '"';
+    values[i] = values[i];
   }
   var finalValues2 = values.join("||");
   return finalValues2;
 };
+
 
 $.fn.addTabs = function (bracketCount) {
   for (var i = 0; i < (bracketCount + 1); i++) {
@@ -24,7 +25,6 @@ $.fn.addTabs = function (bracketCount) {
 };
 
 window.onload = function () {
-  // alert("Now you can write down if/else/elseif loops. \nYou can see the number of loops in 'End Loop' button.\nWhen 'End Loop' button click, app automatically put } for opened last loop.");
   // Menu Accordion
   $(document).ready(function () {
     $(function () {
@@ -53,8 +53,6 @@ window.onload = function () {
         // $("#generateCode").append("&nbsp;");
 
       } $("#generateCode").append("}\n");
-
-
       bracketCount--;
       document.getElementById("bracketCount").innerHTML = (bracketCount);
     }
@@ -199,9 +197,6 @@ window.onload = function () {
         '")'
       );
 
-
-
-
       if ($("#ksw-false").prop("checked")) {
         $("#generateCode").append("==false){\n");
       } else {
@@ -248,6 +243,7 @@ window.onload = function () {
     codeTextAreaclear.value = '';
     bracketCount++;
   });
+
   // Parts.Contains....()
   $("#partsGenerate").click(function () {
     const partsTextAreaclear = document.getElementById('partsTextArea');
@@ -340,6 +336,7 @@ window.onload = function () {
       checkvaluetextclear.value = '';
       addvaluetextclear.value = '';
     }
+    
     // finalCodes = $.fn.multipleValues(getCodes)+$.fn.multipleValues(getCodes2);
   });
 
@@ -404,6 +401,7 @@ window.onload = function () {
     }
 
   });
+
   // sbappendgenerate
   $("#sbappendGenerate").click(function () {
     var checkBox = document.getElementById("errorwarningtoggle");
@@ -416,7 +414,6 @@ window.onload = function () {
         'if (sb.Length &gt; 0)\nError(sb);\n\n'
         );
     }
-    
   });
 
 };
