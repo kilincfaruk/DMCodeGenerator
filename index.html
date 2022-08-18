@@ -39,12 +39,8 @@
             <li><a href="#overrideadd" class="btn">Override</a></li>
             <li><a href="#stringbuilder" class="btn">StringBuilder</a></li>
             <li><a href="#vcode" class="btn">Vehicle Properties</a></li>
-            <li>
-              <a href="#warningg" class="btn" id="warning">Warning Message</a>
-            </li>
-            <li>
-              <a href="#errorr" class="btn" id="error">Error Message</a>
-            </li>
+            <li><a href="#warningg" class="btn" id="warning">Warning Message</a></li>
+            <li><a href="#errorr" class="btn" id="error">Error Message</a> </li>
           </ul>
           <!-- GFZ tab 
                         Faruk7.06.2022-->
@@ -58,6 +54,12 @@
             <button class="button" id="gfzGenerate" hidefocus="true" tabindex="-1">
               Generate
             </button>
+            <br><br>
+            <i class="fa fa-info-circle" id="infoicon" style="font-size:14px"> </i><br>
+            <label for="infoicon" class="infoicon">
+              if(Vehicle.BAND_TMF==" ")<br>
+              return;
+            </label>
 
             <!-- <button type="submit" class="button" id="generate">
               Generate
@@ -126,6 +128,13 @@
             <br /><br />
 
             <button class="button" id="vkgrGenerate">Generate</button>
+            <br><br>
+            <i class="fa fa-info-circle" id="infoicon" style="font-size:14px"> </i><br>
+            <label for="infoicon" class="infoicon">
+              You can search Vkgr codes.
+            </label>
+
+
           </div>
 
           <!-- KSW tab -->
@@ -169,6 +178,12 @@
             <input type="text" id="kswTextArea" title="" placeholder="prosys.*box" name="description" value="" />
             <br /> <br>
             <button class="button" id="kswGenerate">Generate</button>
+            <br><br>
+            <i class="fa fa-info-circle" id="infoicon" style="font-size:14px"> </i><br>
+            <label for="infoicon" class="infoicon">
+              You can search KSW codes.
+            </label>
+
           </div>
 
           <!-- Code tab -->
@@ -205,6 +220,12 @@
             <input type="text" id="codeTextArea" title="Example: xxxxxxx" placeholder="526KD" name="description" />
             <br /><br />
             <button class="button" id="codeGenerate">Generate</button>
+            <br><br>
+            <i class="fa fa-info-circle" id="infoicon" style="font-size:14px"> </i><br>
+            <label for="infoicon" class="infoicon">
+              You can search codes.
+            </label>
+
           </div>
 
           <!-- Parts tab -->
@@ -241,6 +262,12 @@
             <input type="text" id="partsTextArea" title="Example: xxxxxxx" placeholder="526KD" name="description" />
             <br /><br />
             <button class="button" id="partsGenerate">Generate</button>
+            <br><br>
+            <i class="fa fa-info-circle" id="infoicon" style="font-size:14px"> </i><br>
+            <label for="infoicon" class="infoicon">
+              You can search parts codes.
+            </label>
+
           </div>
 
           <!-- check/add -->
@@ -257,6 +284,12 @@
             <button class="button" id="finishcheckaddGenerate" style="margin-left: 5px">
               Finish
             </button>
+            <br><br>
+            <i class="fa fa-info-circle" id="infoicon" style="font-size:14px"> </i><br>
+            <label for="infoicon" class="infoicon">
+              You can check Vgr. If it exist, you can add another Vgr.
+            </label>
+
           </div>
 
           <!-- overrideadd -->
@@ -266,6 +299,12 @@
             <button class="button" id="overrideGenerate" hidefocus="true" tabindex="-1">
               Generate
             </button>
+            <br><br>
+            <i class="fa fa-info-circle" id="infoicon" style="font-size:14px"> </i><br>
+            <label for="infoicon" class="infoicon">
+              You can override the code.
+            </label>
+
           </div>
 
           <!-- StringBuilder -->
@@ -273,7 +312,7 @@
             <label> Click Generate for StringBuilder Code.</label>
             <br><br>
             <label>sb.append: </label><br />
-            <input type="text" id="sbappendtext" value="" />
+            <input type="text" id="sbappendtext" value="" placeholder='sb.Append ("   ");' />
             <br><br>
             <button class="button" id="stringbuilderGenerate" hidefocus="true" tabindex="-1">
               Generate
@@ -294,8 +333,7 @@
             <br><br>
             <i class="fa fa-info-circle" id="infoicon" style="font-size:14px"> </i><br>
             <label for="infoicon" class="infoicon">
-              First click on Generate for <br>"StringBuilder sb = new
-              StringBuilder();"<br> the following clicks are for sb.Append
+              Second generate button for write down <br> error or warning message create sb.
             </label>
 
           </div>
@@ -326,7 +364,7 @@
             <br /><br />
             <span>Search Keys:</span><br />
             <input type="text" id="gfzPropertiesText" name="description" value="" />
-            <br /><br /><br />
+            <br />
 
             <button class="button" id="returnGenerate" style="margin-left: 5px">
               Return
@@ -334,24 +372,47 @@
             <button class="button" id="vehicleGenerate" style="margin-left: 5px">
               Generate
             </button>
+            <br><br>
+            <i class="fa fa-info-circle" id="infoicon" style="font-size:14px"> </i><br>
+            <label for="infoicon" class="infoicon">
+              if(Vehicle.Properties.GFZ.Left(1) <br>
+              or <br>
+              if(Vehicle.Properties.GFZ.Right(1)
+            </label>
+
+
           </div>
 
           <!-- Warning tab -->
           <div id="warningg" class="subMenu">
             <span>Please enter your warning message:</span>
             <br /><br>
-            <input type="text" id="warningmessage" title="Enter Warning Message Here" name="warning"
-              autocomplete="on" />
+            <input type="text" id="warningmessage" title="Enter Warning Message Here" name="warning" autocomplete="on"
+              placeholder='Warning("   ");' />
             <br><br>
             <button class="button" id="warningGenerate">Generate</button>
+            <br><br>
+            <i class="fa fa-info-circle" id="infoicon" style="font-size:14px"> </i><br>
+            <label for="infoicon" class="infoicon">
+              Warning message can generate. <br>
+              Warning(" ");
+            </label>
+
           </div>
 
           <!-- Error tab -->
           <div id="errorr" class="subMenu">
             <span>Please enter your error message:</span>
             <br /><br />
-            <input type="text" id="errormessage" title="Enter Error Message Here" name="warning" />
+            <input type="text" id="errormessage" title="Enter Error Message Here" name="warning"
+              placeholder='Error("   ");' />
             <br><br><button class="button" id="errorGenerate">Generate</button>
+            <br><br>
+            <i class="fa fa-info-circle" id="infoicon" style="font-size:14px"> </i><br>
+            <label for="infoicon" class="infoicon">
+              Error message can generate. <br>
+              Error(" ");
+            </label>
           </div>
         </div>
       </ul>
@@ -364,6 +425,7 @@
             <button class="button" id="reset" , style="background-color: #a3a4a6" onClick="window.location.reload();">
               Reset
             </button>
+
           </div>
 
           <button type="submit" class="button" id="endLoop">

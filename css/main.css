@@ -515,6 +515,14 @@ input[type="text"] {
   display: contents;
 
 }
+ .infoicon {
+  display: none;
+}
+
+i:hover~.infoicon {
+  display: contents;
+
+}
 
 input[type="text"]:focus {
   width: 200px;
