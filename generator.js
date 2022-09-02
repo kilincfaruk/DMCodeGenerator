@@ -1,3 +1,24 @@
+var strUndo=Array(5).fill('');
+var tempUndo="";
+
+function shift(item) {
+  strUndo[4]=strUndo[3];
+  strUndo[3]=strUndo[2];
+  strUndo[2]=strUndo[1];
+  strUndo[1]=strUndo[0];
+  strUndo[0]=item;
+}
+
+function shiftPop(){
+  tempUndo=strUndo[0];
+  strUndo[0]=strUndo[1];
+  strUndo[1]=strUndo[2];
+  strUndo[2]=strUndo[3];
+  strUndo[3]=strUndo[4];
+  strUndo[4]="";
+  return tempUndo;
+}
+
 $.fn.multipleValues = function (getValues) {
   var values = getValues.split(/[\s,]+/g);
   for (var i = 0; i < values.length; i++) {
@@ -19,6 +40,7 @@ $.fn.multipleValues2 = function (getValues) {
 
 $.fn.addTabs = function (bracketCount) {
   for (var i = 0; i < (bracketCount + 1); i++) {
+    //shift(document.getElementById("generateCode").value);
     $("#generateCode").append("&nbsp;");
   }
   document.getElementById("bracketCount").innerHTML = (bracketCount + 1);
@@ -33,7 +55,7 @@ window.onload = function () {
         active: false,
       });
     });
-    $("#tabs").tabShowContent();
+    //$("#tabs").tabShowContent();
   });
 
   var bracketCount = 0;
@@ -47,12 +69,15 @@ window.onload = function () {
       for (var i = bracketCount; i > 0; i--) {
         spaceCount = i - 1;
         while (spaceCount > 0) {
+          //shift(document.getElementById("generateCode").value);
           $("#generateCode").append("&nbsp;");
           spaceCount--;
         }
         // $("#generateCode").append("&nbsp;");
 
-      } $("#generateCode").append("}\n");
+      } 
+      //shift(document.getElementById("generateCode").value);
+      $("#generateCode").append("}\n");
       bracketCount--;
       document.getElementById("bracketCount").innerHTML = (bracketCount);
     }
@@ -73,7 +98,7 @@ window.onload = function () {
       values[i] = 'Vehicle.BAND_TMF=="' + values[i] + '"';
     }
     var finalBandCodes = values.join("||");
-
+    shift(document.getElementById("generateCode").value);
     $("#generateCode").append("if(" + finalBandCodes + ")\nreturn;\n");
     vehicleBandTextclear.value = '';
   });
@@ -87,6 +112,7 @@ window.onload = function () {
       var getVehicleCodes = $("#textArea").val();
       finalVehicleCodes = $.fn.multipleValues(getVehicleCodes);
       $.fn.addTabs(bracketCount);
+      shift(document.getElementById("generateCode").value);
       $("#generateCode").append($("input[name=vkgr-selector]:checked").val() +
         "(Vkgr.Code." +
         $("input[name=radio-btn]:checked").val() +
@@ -94,6 +120,7 @@ window.onload = function () {
         finalVehicleCodes +
         ")"
       );
+      shift(document.getElementById("generateCode").value);
       if ($("#false").prop("checked")) {
         $("#generateCode").append("==false){\n");
       } else {
@@ -107,6 +134,7 @@ window.onload = function () {
       var getVehicleCodes = $("#centerTextArea").val();
       finalVehicleCodes = $.fn.multipleValues(getVehicleCodes);
       $.fn.addTabs(bracketCount);
+      shift(document.getElementById("generateCode").value);
       $("#generateCode").append(
         "AntList&#60;Vkgr&#62; vkgr" +
         vkgrnum +
@@ -119,11 +147,13 @@ window.onload = function () {
     //vkgr IsEmpty // IsNull
     else if ($("#serialVkgrIsEmpty").prop("checked")) {
       $.fn.addTabs(bracketCount);
+      shift(document.getElementById("generateCode").value);
       $("#generateCode").append($("input[name=vkgr-selector]:checked").val() + "(serialVkgr.IsEmpty()){" + "\n");
 
       bracketCount++;
     } else if ($("#serialVkgrIsNull").prop("checked")) {
       $.fn.addTabs(bracketCount);
+      shift(document.getElementById("generateCode").value);
       $("#generateCode").append("if(serialVkgr.IsNull()){" + "\n");
       bracketCount++;
     } else {
@@ -139,6 +169,7 @@ window.onload = function () {
   $("#warningGenerate").click(function () {
     // $.fn.addTabs(bracketCount);
     const warningmessageclear = document.getElementById('warningmessage');
+    shift(document.getElementById("generateCode").value);
     $("#generateCode").append(
       'Warning("' + $("#warningmessage").val() + '");\n'
     );
@@ -150,6 +181,7 @@ window.onload = function () {
     const errormessageclear = document.getElementById('errormessage');
       
     // $.fn.addTabs(bracketCount);
+    shift(document.getElementById("generateCode").value);
     $("#generateCode").append(
       'Error("' + $("#errormessage").val() + '");\n'
     );
@@ -168,6 +200,13 @@ window.onload = function () {
     $("#myTooltip").html("Copied");
   });
 
+  $("#undo").click(function(){
+    alert("undo test");
+    console.log(strUndo);
+    $("#generateCode").value=shiftPop();
+    document.getElementById("generateCode").text=$("#generateCode").value;
+  })
+
   // Ksw
   $("#kswGenerate").click(function () {
     // ksw code
@@ -178,6 +217,7 @@ window.onload = function () {
       var kswText = $("#kswTextArea").val();
       kswText3 = $.fn.multipleValues2(kswText);
       for (var i = 0; i < bracketCount; i++) {
+        //shift(document.getElementById("generateCode").value);
         $("#generateCode").append("&nbsp;");
       }
       // $('input[name=radio-btn]:checked').val()
@@ -185,10 +225,12 @@ window.onload = function () {
       var getkswCodes = $("#kswCode").val();
       finalKswCodes = $.fn.multipleValues(getkswCodes);
       for (var i = 0; i < bracketCount; i++) {
+        //shift(document.getElementById("generateCode").value);
         $("#generateCode").append("&nbsp;");
       }
 
       // kswText
+      shift(document.getElementById("generateCode").value);
       $("#generateCode").append($("input[name=ksw-selector]:checked").val() +
         "(Ksw.Code.Gets(" +
         finalKswCodes +
@@ -196,7 +238,7 @@ window.onload = function () {
         kswText3 +
         '")'
       );
-
+      shift(document.getElementById("generateCode").value);
       if ($("#ksw-false").prop("checked")) {
         $("#generateCode").append("==false){\n");
       } else {
@@ -211,7 +253,7 @@ window.onload = function () {
       for (var i = 0; i < bracketCount; i++) {
         $("#generateCode").append("&nbsp;");
       }
-
+      shift(document.getElementById("generateCode").value);
       $("#generateCode").append($("input[name=ksw-selector]:checked").val() +
         '(Ksw.Text.IsMatch(@"' +
         kswText3 +
@@ -233,6 +275,7 @@ window.onload = function () {
     const codeTextAreaclear = document.getElementById('codeTextArea');
     finalCodes = $.fn.multipleValues(getCodes);
     $.fn.addTabs(bracketCount);
+    shift(document.getElementById("generateCode").value);
     $("#generateCode").append($("input[name=code-selector]:checked").val() +
       "(Code." +
       $("input[name=coderadio]:checked").val() +
@@ -250,6 +293,7 @@ window.onload = function () {
     var getCodes = $("#partsTextArea").val();
     finalCodes = $.fn.multipleValues(getCodes);
     $.fn.addTabs(bracketCount);
+    shift(document.getElementById("generateCode").value);
     $("#generateCode").append($("input[name=parts-selector]:checked").val() +
       "(Parts." +
       $("input[name=partsradio]:checked").val() +
@@ -269,6 +313,7 @@ window.onload = function () {
     const gfzPropertiestextclear = document.getElementById('gfzPropertiesText');
     
     finalCodes = $.fn.multipleValues(getCodes);
+    shift(document.getElementById("generateCode").value);
     $("#generateCode").append($("input[name=vcode-selector]:checked").val() +
       "(Vehicle.Properties.GFZ." +
       $("input[name=properties]:checked").val() +
@@ -288,6 +333,7 @@ window.onload = function () {
     // $.fn.addTabs(bracketCount);
     var getCodes = $("#gfzPropertiesText").val();
     finalCodes = $.fn.multipleValues(getCodes);
+    shift(document.getElementById("generateCode").value);
     $("#generateCode").append($("input[name=vcode-selector]:checked").val() +
       "(Vehicle.Properties.GFZ." +
       $("input[name=properties]:checked").val() +
@@ -308,8 +354,10 @@ window.onload = function () {
     const addvaluetextclear = document.getElementById('addvaluetext');
     var getCodes = $("#checkvaluetext").val();
     var getCodes2 = $("#addvaluetext").val();
+    shift(document.getElementById("generateCode").value);
     if (checkcounter < 1) {
       $("#generateCode").append("AntDictionary&lt;string, AntList&lt;string&gt;&gt; keys = new AntDictionary&lt;string, AntList&lt;string&gt;&gt;();\n")
+      shift(document.getElementById("generateCode").value);
       $("#generateCode").append(
         'keys.CheckValue("' +
         getCodes +
@@ -325,6 +373,7 @@ window.onload = function () {
       checkcounter++;
     }
     else {
+      shift(document.getElementById("generateCode").value);
       $("#generateCode").append(
         'keys.CheckValue("' +
         getCodes +
@@ -341,6 +390,7 @@ window.onload = function () {
   });
 
   $("#overrideGenerate").click(function () {
+    shift(document.getElementById("generateCode").value);
     $("#generateCode").append(
       'AntList&lt;Ksta&gt; kstas = Ksw.Code.Gets(Ksw.Code.KswCodes);\n'
       +
@@ -373,6 +423,7 @@ window.onload = function () {
 
   // finishcheckaddGenerate
   $("#finishcheckaddGenerate").click(function () {
+    shift(document.getElementById("generateCode").value);
     $("#generateCode").append(
       'StringBuilder sb = new StringBuilder();\nkeys.Each(row =&gt;\n{\n&emsp;&emsp;if (Vkgr.Code.Contains(row.Key) && Vkgr.Code.Contains(row.Value) == false)\n&emsp;&emsp;&emsp;sb.Append(row.Key).Append(" ").Append("Kullanıldığında").Append(" ").Append(row.Value.JoinAs()).Append(" sapma ihtiyacı ortaya çıkmaktadır öncelikli satış grubu düzelttirilmeli veya duruma göre sapma da girilebilir.");\n'
       +
@@ -386,6 +437,7 @@ window.onload = function () {
     const sbappendtextclear = document.getElementById('sbappendtext');
     var getCodes = $("#sbappendtext").val();
     if (stringbuildercounter < 1) {
+      shift(document.getElementById("generateCode").value);
       $("#generateCode").append(
         'StringBuilder sb = new StringBuilder();\n'
       );
@@ -393,6 +445,7 @@ window.onload = function () {
   
     }
     else {
+      shift(document.getElementById("generateCode").value);
       $("#generateCode").append(
         'sb.Append ("' + getCodes + '");\n'
       );
@@ -405,6 +458,7 @@ window.onload = function () {
   // sbappendgenerate
   $("#sbappendGenerate").click(function () {
     var checkBox = document.getElementById("errorwarningtoggle");
+    shift(document.getElementById("generateCode").value);
     if (checkBox.checked == true){
       $("#generateCode").append(
         'if (sb.Length &gt; 0)\nWarning(sb);\n\n'
