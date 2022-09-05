@@ -1,12 +1,16 @@
 var strUndo=Array(5).fill('');
 var tempUndo="";
 
+
 function shift(item) {
-  strUndo[4]=strUndo[3];
-  strUndo[3]=strUndo[2];
-  strUndo[2]=strUndo[1];
-  strUndo[1]=strUndo[0];
-  strUndo[0]=item;
+  if(item!=""){
+    strUndo[4]=strUndo[3];
+    strUndo[3]=strUndo[2];
+    strUndo[2]=strUndo[1];
+    strUndo[1]=strUndo[0];
+    strUndo[0]=item;
+  }
+
 }
 
 function shiftPop(){
@@ -200,12 +204,17 @@ window.onload = function () {
     $("#myTooltip").html("Copied");
   });
 
-  $("#undo").click(function(){
-    alert("undo test");
+  function undo(){
     console.log(strUndo);
-    $("#generateCode").value=shiftPop();
-    document.getElementById("generateCode").text=$("#generateCode").value;
-  })
+    let item=shiftPop();
+    $("#generateCode").val(item);
+    //$("#generateCode").append("Ege");
+    console.log(document.getElementById("generateCode").value);
+    bracketCount--;
+    $.fn.addTabs(bracketCount);
+    return
+  }
+  document.getElementById("undo").addEventListener("click", undo);
 
   // Ksw
   $("#kswGenerate").click(function () {
@@ -267,6 +276,7 @@ window.onload = function () {
     kswTextAreaclear.value = '';
     kswCodeclear.value = '';
     bracketCount++;
+    console.log(document.getElementById("generateCode").text);
   });
 
   // CODE.Contains....()
