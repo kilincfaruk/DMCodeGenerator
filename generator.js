@@ -1,6 +1,6 @@
 var strUndo=Array(5).fill('');
 var tempUndo="";
-
+var undoCounter=0;
 
 function shift(item) {
   if(item!=""){
@@ -44,7 +44,6 @@ $.fn.multipleValues2 = function (getValues) {
 
 $.fn.addTabs = function (bracketCount) {
   for (var i = 0; i < (bracketCount + 1); i++) {
-    //shift(document.getElementById("generateCode").value);
     $("#generateCode").append("&nbsp;");
   }
   document.getElementById("bracketCount").innerHTML = (bracketCount + 1);
@@ -73,7 +72,6 @@ window.onload = function () {
       for (var i = bracketCount; i > 0; i--) {
         spaceCount = i - 1;
         while (spaceCount > 0) {
-          //shift(document.getElementById("generateCode").value);
           $("#generateCode").append("&nbsp;");
           spaceCount--;
         }
@@ -205,14 +203,34 @@ window.onload = function () {
   });
 
   function undo(){
+    var data=document.getElementById("generateCode").value;
+    data=String(data);
+    //data=data.substring(data.lastIndexOf("\n") + 1, -1 );
+    data=data.replace(/\r?\n?[^\r\n]*$/,"");
+    console.log(data);    
+    document.getElementById("generateCode").innerHTML=data;
+    bracketCount--;
+    //spaceCount--;
+    $.fn.addTabs(bracketCount);
+
+    /*if(undoCounter==0){
+      bracketCount--;
+    }
+    undoCounter++;
+    if(undoCounter==2){
+      undoCounter=0;
+      bracketCount--;
+    }
+    $.fn.addTabs(bracketCount);
     console.log(strUndo);
     let item=shiftPop();
-    $("#generateCode").val(item);
-    //$("#generateCode").append("Ege");
-    console.log(document.getElementById("generateCode").value);
-    bracketCount--;
-    $.fn.addTabs(bracketCount);
-    return
+    //bracketCount--;
+    for(let i=0;i<4;i++){
+      item=item.slice(0,-1);
+    }    
+    document.getElementById("generateCode").innerHTML=item;
+    spaceCount--;
+    return*/
   }
   document.getElementById("undo").addEventListener("click", undo);
 
