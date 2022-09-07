@@ -45,7 +45,7 @@
           <!-- GFZ tab 
                         Faruk7.06.2022-->
           <div id="gfz" class="subMenu">
-            <span>Please enter GFZ type:</span>
+            <span>Please enter ignore code:</span>
             <br /><br />
             <input type="text" id="vehicleBandText"
               title="If you want to enter more than one data, just leave a space between them" placeholder="FH WJ"
@@ -217,7 +217,7 @@
               </li> -->
             </ul>
             <br /><br />
-            <input type="text" id="codeTextArea" title="Example: xxxxxxx" placeholder="11111111111" name="description" />
+            <input type="text" id="codeTextArea" title="Example: xxxxxxx" placeholder="526KD" name="description" />
             <br /><br />
             <button class="button" id="codeGenerate">Generate</button>
             <br><br>
@@ -450,8 +450,17 @@
         </div>
       </section>
     </div>
+    <!--<div>
+      <textarea rows="1" name="version" id="version" readonly="readonly" style="margin-bottom: 8px">
+        Version:1.1.0
+      </textarea>
+    </div>-->
   </div>
-
+  <div name="versionDiv" id="versionDiv">
+    <label rows="1" class="version" name="version" id="version" readonly="readonly"> 
+      Version: 1.1.1
+    </label>
+  </div>
 </body>
 
 </html>
