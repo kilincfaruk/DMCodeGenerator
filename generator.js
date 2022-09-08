@@ -1,7 +1,7 @@
 var strUndo=Array(5).fill('');
 var tempUndo="";
 var undoCounter=0;
-
+var vkgrPre;
 function shift(item) {
   if(item!=""){
     strUndo[4]=strUndo[3];
@@ -144,21 +144,29 @@ window.onload = function () {
         finalVehicleCodes +
         ");\n"
       );
+      vkgrPre=vkgrnum;
       vkgrnum++;
     }
     //vkgr IsEmpty // IsNull
     else if ($("#serialVkgrIsEmpty").prop("checked")) {
       $.fn.addTabs(bracketCount);
       shift(document.getElementById("generateCode").value);
-      $("#generateCode").append($("input[name=vkgr-selector]:checked").val() + "(serialVkgr.IsEmpty()){" + "\n");
-
+      $("#generateCode").append($("input[name=vkgr-selector]:checked").val() + "(vkgr"+vkgrPre+".IsEmpty()){" + "\n");
       bracketCount++;
-    } else if ($("#serialVkgrIsNull").prop("checked")) {
+    } 
+    else if ($("#serialVkgrIsNotEmpty").prop("checked")) {
+      $.fn.addTabs(bracketCount);
+      shift(document.getElementById("generateCode").value);
+      $("#generateCode").append($("input[name=vkgr-selector]:checked").val() + "(vkgr"+vkgrPre+".IsNotEmpty()){" + "\n");
+      bracketCount++;
+    }
+    else if ($("#serialVkgrIsNull").prop("checked")) {
       $.fn.addTabs(bracketCount);
       shift(document.getElementById("generateCode").value);
       $("#generateCode").append("if(serialVkgr.IsNull()){" + "\n");
       bracketCount++;
-    } else {
+    }
+    else {
       alert("Please Select VKGR Type!");
     }
     textAreaclear.value = '';
@@ -215,6 +223,10 @@ window.onload = function () {
     console.log(data);    
     document.getElementById("generateCode").innerHTML=data;
     bracketCount--;
+    if(bracketCount<0)
+    {
+      bracketCount=0;
+    }
     //spaceCount--;
     $.fn.addTabs(bracketCount);
 
@@ -247,7 +259,7 @@ window.onload = function () {
     if ($("#code-button").prop("checked")) {
       $.fn.addTabs(bracketCount);
       var kswText = $("#kswTextArea").val();
-      kswText3 = $.fn.multipleValues2(kswText);
+      var kswText3 = $.fn.multipleValues2(kswText);
       for (var i = 0; i < bracketCount; i++) {
         //shift(document.getElementById("generateCode").value);
         $("#generateCode").append("&nbsp;");
@@ -271,10 +283,10 @@ window.onload = function () {
         '")'
       );
       shift(document.getElementById("generateCode").value);
-      if ($("#ksw-false").prop("checked")) {
+      if ($("#ksw_false").prop("checked")) {
         $("#generateCode").append("==false){\n");
       } else {
-        $("#generateCode").append("){\n");
+        $("#generateCode").append("==true){\n");
       }
     }
 
@@ -288,7 +300,7 @@ window.onload = function () {
       shift(document.getElementById("generateCode").value);
       $("#generateCode").append($("input[name=ksw-selector]:checked").val() +
         '(Ksw.Text.IsMatch(@"' +
-        kswText3 +
+        document.getElementById("kswTextArea").value +
         '")==' +
         $("input[name=kswtf-btn]:checked").val() +
         "){\n"
@@ -299,7 +311,7 @@ window.onload = function () {
     kswTextAreaclear.value = '';
     kswCodeclear.value = '';
     bracketCount++;
-    console.log(document.getElementById("generateCode").text);
+    //console.log(document.getElementById("generateCode").text);
   });
 
   // CODE.Contains....()

@@ -18,6 +18,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="generator.js"></script>
   <script src="jquery-ui.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
   <div class="hero-img"></div>
 
@@ -121,10 +123,13 @@
             <br /><br />
 
             <label><input type="radio" name="vkgrselector" id="serialVkgrIsEmpty" title="if(serialVkgr.IsEmpty())"
-                name="tf-btn" value="serialVkgr" />serialVkgr.IsEmpty())</label>
+                name="tf-btn" value="serialVkgr" />vkgrs.IsEmpty())</label>
+            <br /><br />
+            <label><input type="radio" name="vkgrselector" id="serialVkgrIsNotEmpty" title="if(serialVkgr.IsNotEmpty())"
+              name="tf-btn" value="serialVkgr" />vkgrs.IsNotEmpty())</label>
             <br /><br />
             <label><input type="radio" name="vkgrselector" id="serialVkgrIsNull" title="if(serialVkgr.IsNull())"
-                name="tf-btn" value="serialVkgr" />serialVkgr.IsNull())</label>
+                name="tf-btn" value="serialVkgr" />vkgrs.IsNull())</label>
             <br /><br />
 
             <button class="button" id="vkgrGenerate">Generate</button>
@@ -142,10 +147,10 @@
             <div class="ksw-radio-group">
               <input type="radio" id="ksw-if" name="ksw-selector" value="if" />
               <label for="ksw-if">if</label>
-              <input type="radio" id="ksw-else" name="ksw-selector" value="else" />
-              <label for="ksw-else">else</label>
               <input type="radio" id="ksw-elseif" name="ksw-selector" value="elseif" />
               <label for="ksw-elseif">elseif</label>
+              <input type="radio" id="ksw-else" name="ksw-selector" value="else" />
+              <label for="ksw-else">else</label>
             </div>
             <br /><br />
             <label for="html">Classes</label>
@@ -165,12 +170,13 @@
             <ul>
               <li>
                 <label>
-                  <input type="radio" id="ksw-true" name="kswtf-btn" title="if(Ksw.Text.IsMatch(@ &quot&quot)==true){"
+                  <!---radio butonları oynanacak-->
+                  <input type="radio" id="ksw_true" name="kswtf-btn" title="if(Ksw.Text.IsMatch(@ &quot&quot)==true){"
                     value="true" />True</label>
               </li>
               <li>
                 <label>
-                  <input type="radio" id="ksw-false" name="kswtf-btn" title="if(Ksw.Text.IsMatch(@ &quot&quot)==false){"
+                  <input type="radio" id="ksw_false" name="kswtf-btn" title="if(Ksw.Text.IsMatch(@ &quot&quot)==false){"
                     value="false" />False</label>
               </li>
             </ul>
@@ -422,10 +428,13 @@
         <div class="tooltip">
           <div class="action-button">
             <label for="output">Output</label>
-            <button class="button" id="reset" , style="background-color: #a3a4a6" onClick="window.location.reload();">
+            <button class="button" id="reset" , style="background-color: #a3a4a6; " onClick="window.location.reload();">
               Reset
             </button>
-
+            <button class="button"  style="" id="undo">
+              <span class="btn_icon"><ion-icon name="arrow-undo"></ion-icon></span>
+              <span class="btn_text">Undo</span>              
+            </button>
           </div>
 
           <button type="submit" class="button" id="endLoop">
@@ -443,10 +452,6 @@
             <label class="tooltiptext" id="myTooltip">Copy to clipboard</label>
             Copy text
           </button>
-          <button class="button tooltip-explanation"  style="margin-top: 28px" id="undo">
-            <label class="tooltiptext" id="myTooltip">UNDO</label>
-            UNDO
-          </button>
         </div>
       </section>
     </div>
@@ -458,7 +463,7 @@
   </div>
   <div name="versionDiv" id="versionDiv">
     <label rows="1" class="version" name="version" id="version" readonly="readonly"> 
-      Version: 1.1.1
+      Version: 1.1.6
     </label>
   </div>
 </body>
