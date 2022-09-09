@@ -135,19 +135,40 @@ window.onload = function () {
     else if ($("#centerCode").prop("checked")) {
       var getVehicleCodes = $("#centerTextArea").val();
       finalVehicleCodes = $.fn.multipleValues(getVehicleCodes);
+      var footerTextArea=document.getElementById("footerTextArea").value
       $.fn.addTabs(bracketCount);
       shift(document.getElementById("generateCode").value);
-      $("#generateCode").append(
-        "AntList&#60;Vkgr&#62; vkgr" +
-        vkgrnum +
-        " = Vkgr.CenterCode.Gets(" +
-        finalVehicleCodes +
-        ");\n"
-      );
+      if($("#footer").prop("checked")){
+        $("#generateCode").append(
+          "AntList&#60;Vkgr&#62; vkgr" +
+          vkgrnum +
+          " = Vkgr.CenterCode.Gets(" +
+          finalVehicleCodes +
+          ").WhereS(t=>t.FooterCode.Left(");
+          if($("#footer_radio1").prop("checked")){
+            $("#generateCode").append(
+              '1)=="'+footerTextArea+'").GetMatch("");\n'
+            )
+          }
+          else if($("#footer_radio2").prop("checked")){
+            $("#generateCode").append(
+              '2)=="'+footerTextArea+'").GetMatch("");\n'
+            )
+          }
+      }
+      else{
+        $("#generateCode").append(
+          "AntList&#60;Vkgr&#62; vkgr" +
+          vkgrnum +
+          " = Vkgr.CenterCode.Gets(" +
+          finalVehicleCodes +
+          ");\n"
+        );
+      }
       vkgrPre=vkgrnum;
       vkgrnum++;
     }
-    //vkgr IsEmpty // IsNull
+    //vkgr IsEmpty //IsNotEmpty()// IsNull
     else if ($("#serialVkgrIsEmpty").prop("checked")) {
       $.fn.addTabs(bracketCount);
       shift(document.getElementById("generateCode").value);

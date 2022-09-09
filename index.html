@@ -102,7 +102,6 @@
             </ul>
             <br /><br />
             <br /><br />
-            <br /><br />
 
             <span>
               If your statement false please
@@ -122,14 +121,33 @@
               placeholder="#5380" />
             <br /><br />
 
-            <label><input type="radio" name="vkgrselector" id="serialVkgrIsEmpty" title="if(serialVkgr.IsEmpty())"
+            <label><input type="radio" name="vkgrselector" id="serialVkgrIsEmpty" title="if(serialVkgr.IsEmpty()"
                 name="tf-btn" value="serialVkgr" />vkgrs.IsEmpty())</label>
-            <br /><br />
-            <label><input type="radio" name="vkgrselector" id="serialVkgrIsNotEmpty" title="if(serialVkgr.IsNotEmpty())"
+            <br />
+            <label><input type="radio" name="vkgrselector" id="serialVkgrIsNotEmpty" title="if(serialVkgr.IsNotEmpty()"
               name="tf-btn" value="serialVkgr" />vkgrs.IsNotEmpty())</label>
-            <br /><br />
-            <label><input type="radio" name="vkgrselector" id="serialVkgrIsNull" title="if(serialVkgr.IsNull())"
+            <br />
+            <label><input type="radio" name="vkgrselector" id="serialVkgrIsNull" title="if(serialVkgr.IsNull()"
                 name="tf-btn" value="serialVkgr" />vkgrs.IsNull())</label>
+            <br /><br />
+
+            <!--Footer-->
+            <label><input type="radio" name="vkgrfooter" id="footer" title=".WhereS(t=>t.FooterCode.Left("
+              name="footer-btn" value="footer" />Footer</label>
+            <br />
+            <ul class="floatLeft">
+              <li>
+                <label><input type="radio" title="1" id="footer_radio1" name="radio-footer"
+                    value="1" />1</label>
+              </li>
+              <li>
+                <label><input type="radio" title="2" id="footer_radio2" name="radio-footer"
+                    value="2" />2</label>
+              </li>
+            </ul>
+            <br /><br />
+            <input type="text" id="footerTextArea" title="Example: xxxxxxx" name="footerDescription" value="" maxlength="2"
+            placeholder="değiştir" />
             <br /><br />
 
             <button class="button" id="vkgrGenerate">Generate</button>
@@ -368,7 +386,7 @@
             <span>How Many Digit:</span><br />
             <input type="number" placeholder="Left(3) || Right(3) " id="gfzProperties" />
             <br /><br />
-            <span>Search Keys:</span><br />
+            <span>Search GFZ Keyword:</span><br />
             <input type="text" id="gfzPropertiesText" name="description" value="" />
             <br />
 
@@ -429,9 +447,10 @@
           <div class="action-button">
             <label for="output">Output</label>
             <button class="button" id="reset" , style="background-color: #a3a4a6; " onClick="window.location.reload();">
+              <ion-icon name="trash"></ion-icon>
               Reset
             </button>
-            <button class="button"  style="" id="undo">
+            <button class="button" id="undo">
               <span class="btn_icon"><ion-icon name="arrow-undo"></ion-icon></span>
               <span class="btn_text">Undo</span>              
             </button>
@@ -449,21 +468,17 @@
 
         <div class="reset-btn">
           <button class="button tooltip-explanation" onclick="createItem()" style="margin-top: 28px" id="copy">
-            <label class="tooltiptext" id="myTooltip">Copy to clipboard</label>
+            <ion-icon name="copy-outline"></ion-icon>
+            <label class="tooltiptext" id="myTooltip">Copy to clipboard</label>            
             Copy text
           </button>
         </div>
       </section>
     </div>
-    <!--<div>
-      <textarea rows="1" name="version" id="version" readonly="readonly" style="margin-bottom: 8px">
-        Version:1.1.0
-      </textarea>
-    </div>-->
   </div>
   <div name="versionDiv" id="versionDiv">
     <label rows="1" class="version" name="version" id="version" readonly="readonly"> 
-      Version: 1.1.6
+      Version: 1.2.0
     </label>
   </div>
 </body>
