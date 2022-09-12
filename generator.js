@@ -244,12 +244,13 @@ window.onload = function () {
     console.log(data);    
     document.getElementById("generateCode").innerHTML=data;
     bracketCount--;
+    $.fn.addTabs(bracketCount);
     if(bracketCount<0)
     {
       bracketCount=0;
     }
     //spaceCount--;
-    $.fn.addTabs(bracketCount);
+    
 
     /*if(undoCounter==0){
       bracketCount--;
