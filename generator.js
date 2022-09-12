@@ -232,10 +232,10 @@ window.onload = function () {
   });
 
   function undo(){
-    if(undoCounter==0){
-      bracketCount++;
+    /*if(undoCounter==0){
+      bracketCount++;//
       $.fn.addTabs(bracketCount);
-    }
+    }*/
     undoCounter++;
     var data=document.getElementById("generateCode").value;
     data=String(data);
