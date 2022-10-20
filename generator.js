@@ -2,6 +2,8 @@ var strUndo=Array(5).fill('');
 var tempUndo="";
 var undoCounter=0;
 var vkgrPre;
+var isMatchCounter=0;
+var vkgrArr=[];
 function shift(item) {
   if(item!=""){
     strUndo[4]=strUndo[3];
@@ -166,11 +168,13 @@ window.onload = function () {
         );
       }
       vkgrPre=vkgrnum;
+      vkgrArr.push("vkgr"+vkgrnum);
       vkgrnum++;
     }
     //vkgr IsEmpty //IsNotEmpty()// IsNull
     else if ($("#serialVkgrIsEmpty").prop("checked")) {
       $.fn.addTabs(bracketCount);
+      
       shift(document.getElementById("generateCode").value);
       $("#generateCode").append($("input[name=vkgr-selector]:checked").val() + "(vkgr"+vkgrPre+".IsEmpty()){" + "\n");
       bracketCount++;
@@ -187,6 +191,16 @@ window.onload = function () {
       $("#generateCode").append("if(serialVkgr.IsNull()){" + "\n");
       bracketCount++;
     }
+	    //isMatch
+      else if ($("#serialVkgrIsMatch").prop("checked")) {
+        $.fn.addTabs(bracketCount);
+        $("#generateCode").append($("input[name=vkgr-selector]:checked").val() +
+         "("+vkgrArr[isMatchCounter]+'.IsMatch("'+document.getElementById("IsMatchTextArea").value
+         +'")==false){' + "\n");
+        isMatchCounter++; 
+        bracketCount++;
+      }
+      //    
     else {
       alert("Please Select VKGR Type!");
     }
