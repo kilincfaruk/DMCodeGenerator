@@ -245,6 +245,20 @@ window.onload = function () {
     $("#myTooltip").html("Copied");
   });
 
+
+  document.addEventListener('mouseup', function(e) {
+    var collection = document.getElementsByClassName("subMenu");
+       
+ 
+        for(let i =0; i<collection.length; i++)
+        {
+         if (!collection[i].contains(e.target)) {
+         collection[i].style.display = 'none';
+     }
+        }
+     
+   });
+
   function undo(){
     /*if(undoCounter==0){
       bracketCount++;//
@@ -287,8 +301,8 @@ window.onload = function () {
   }
   document.getElementById("undo").addEventListener("click", undo);
 
-  // Ksw
-  $("#kswGenerate").click(function () {
+   // Ksw
+   $("#kswGenerate").click(function () {
     // ksw code
     const kswTextAreaclear = document.getElementById('kswTextArea');
     const kswCodeclear = document.getElementById('kswCode');
@@ -315,16 +329,32 @@ window.onload = function () {
         "(Ksw.Code.Gets(" +
         finalKswCodes +
         ').IsMatchFull(@"' +
-        kswText3 +
-        '")'
+
+        '(?is)^'
       );
-      shift(document.getElementById("generateCode").value);
-      if ($("#ksw_false").prop("checked")) {
-        $("#generateCode").append("==false){\n");
-      } else {
-        $("#generateCode").append("==true){\n");
+      
+      
+      
+      $("#ksw-and").click(function () {
+     
+        $("#generateCode").append(
+          "(?=.*?\\b(" +
+          $("#kswCode").val()+
+          ")\\b)"
+          
+          );
+
+          $("#kswCode").val('');
+        });
+
+        $("#ksw-finish").click(function () {
+     
+          $("#generateCode").append('"){');
+  
+            $("#kswCode").val('');
+          });
+
       }
-    }
 
     // ksw text
     else if ($("#text-button").prop("checked")) {
@@ -348,6 +378,9 @@ window.onload = function () {
     kswCodeclear.value = '';
     bracketCount++;
     //console.log(document.getElementById("generateCode").text);
+
+    
+
   });
 
   // CODE.Contains....()
