@@ -45,6 +45,7 @@
             <li><a href="#code" class="btn">Code</a></li>
             <li><a href="#parts" class="btn">Parts</a></li>
             <li><a href="#checkadd" class="btn">CheckValue / Add</a></li>
+            <li><a href="#newItem" class="btn">New Item</a></li>
             <li><a href="#overrideadd" class="btn">Override</a></li>
             <li><a href="#stringbuilder" class="btn">StringBuilder</a></li>
             <li><a href="#vcode" class="btn">Vehicle Properties</a></li>
@@ -343,6 +344,22 @@
 
           </div>
 
+          <!-- NewItem Tab -->
+          <div id="newItem" class="subMenu">
+            <label>Parça Saydırma</label>
+            <br><br>
+            <input type="text" placeholder="parçasaydırma" id="newItemText" value="" />
+            <br /><br />
+            <label>Counter value</label>
+            <br><br>
+            <input type="text" placeholder="cnt.Value < 5" id="newItemTextCounter" value="" />
+            <br /><br />
+            <button class="button" id="newItenGenerate">
+              Generate
+            </button>
+
+          </div>
+
           <!-- overrideadd -->
           <div id="overrideadd" class="subMenu">
             <label> Click Generate for Override Code.</label>
@@ -505,7 +522,7 @@
   </div>
   <div name="versionDiv" id="versionDiv">
     <label rows="1" class="version" name="version" id="version" readonly="readonly"> 
-      Version: 1.2.1
+      Version: 1.2.3
     </label>
   </div>
 </body>

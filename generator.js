@@ -208,6 +208,64 @@ window.onload = function () {
     centerTextAreaclear.value = '';
   });
 
+  //newItem Parça saydırma
+  $("#newItenGenerate").click(function () {
+    $("#generateCode").append('AntList &lt;PartListItem&gt; partList = PartList.Gets("'+document.getElementById("newItemText").value+
+    '");'+'\n');
+    
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('AntDictionary &lt; string, decimal &gt; counts = new AntDictionary &lt;string, decimal&gt;();'+'\n');
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('AntDictionary&lt;string, AntList&lt;string&gt;&gt; paths = new AntDictionary&lt;string, AntList&lt;string&gt;&gt;();'+'\n');
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('partList.Each(pl =&gt;'+'\n');
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append("{\n");
+    bracketCount++;
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('if (pl.CR == "C")\n');
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('else\n');
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('{\n');
+    bracketCount++;
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('if (pl.PET_HasValue)\n');
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('{\n');
+    bracketCount++;
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('decimal count = counts.GetValue( pl.Part.FormattedCode ) + pl.MENGE;\n');
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('counts.SetValue(pl.Part.FormattedCode, count);\n');
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('paths.CheckValue( pl.Part.FormattedCode ).Add(pl.GetPath(" -> "));\n');
+    bracketCount--;
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('}\n');
+    bracketCount--;
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('}\n');
+    bracketCount--;
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('});\n');
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('counts.Each(cnt =>\n');
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('{\n');
+    bracketCount++;
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('if (cnt.Value < '+document.getElementById('newItemTextCounter').value+')');
+    bracketCount++;
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('sb.Append("'+document.getElementById("newItemText").value+' kablosu araca'+ document.getElementById('newItemTextCounter').value +'adet gelmelidir.");\n');
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('else\n');
+    bracketCount++;
+    $.fn.addTabs(bracketCount);
+    $("#generateCode").append('sb.Append(paths.GetValue(cnt.Key).JoinAs(", ")).Append(" Count : ").Append(cnt.Value); \n');
+    bracketCount=bracketCount-2;
+  });
 
 
   //warning

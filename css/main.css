@@ -700,40 +700,47 @@ footer {
 #checkadd.subMenu {
   position: absolute;
   top: 46.7%;
-  left: 13%;
+  left: 17%;
 }
 
 #overrideadd.subMenu {
   position: absolute;
   top: 52%;
-  left: 13%;
+  left: 17%;
 }
 
 #stringbuilder.subMenu {
   position: absolute;
   top: 58.7%;
-  left: 13%;
+  left: 17%;
 }
 
 #vcode.subMenu {
   position: absolute;
   top: 65%;
-  left: 13%;
+  left: 17%;
 }
 
 #warningg.subMenu {
   position: fixed;
   z-index: 1;
   top: 71%;
-  left: 13%;
+  left: 17%;
 
+}
+
+#newItem.subMenu{
+  position: fixed;
+  z-index: 1;
+  top: 45%;
+  left: 17%;
 }
 
 #errorr.subMenu {
   position: fixed;
   z-index: 1;
   top: 77%;
-  left: 13%;
+  left: 17%;
 }
 
 .feature {
