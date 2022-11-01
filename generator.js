@@ -136,6 +136,7 @@ window.onload = function () {
     // vkgr centercode
     else if ($("#centerCode").prop("checked")) {
       var getVehicleCodes = $("#centerTextArea").val();
+      
       finalVehicleCodes = $.fn.multipleValues(getVehicleCodes);
       var footerTextArea=document.getElementById("footerTextArea").value
       $.fn.addTabs(bracketCount);
@@ -466,13 +467,37 @@ window.onload = function () {
     finalCodes = $.fn.multipleValues(getCodes);
     $.fn.addTabs(bracketCount);
     shift(document.getElementById("generateCode").value);
-    $("#generateCode").append($("input[name=parts-selector]:checked").val() +
+    if(document.getElementById("partsDoubling").checked){
+      $("#generateCode").append($("input[name=partsradio]:checked").val()+
+      '\nAntList&lt;PartListItem&gt; partCodePartList = partListContainer.Gets("'+
+      document.getElementById("partsTextArea").value+'");\nif (partCodePartList.IsNotEmpty())\n{\n');
+      bracketCount++;
+      $.fn.addTabs(bracketCount);
+     $("#generateCode").append("foreach (PartListItem partListItem in partCodePartList)\n");
+      $.fn.addTabs(bracketCount);
+      $("#generateCode").append("{\n\n");
+      $.fn.addTabs(bracketCount);
+      $("#generateCode").append("}\n");
+      $.fn.addTabs(bracketCount);
+      $("#generateCode").append("partCodePartList.Each(partListItem =&gt;\n");
+      $.fn.addTabs(bracketCount);
+      $("#generateCode").append("{\n\n");
+      $("#generateCode").append("});\n");
+      bracketCount--;
+      $("#generateCode").append('    Error("Araçta  " + partCodePartList.Count + " adet ' +
+      document.getElementById("partsTextArea").value 
+      +' tasteri '+finalVehicleCodes +' göbeklerinden gelmektedir. Fazla olan taster çıkarılmalıdır." );\n');
+    }
+    else{
+      $("#generateCode").append($("input[name=parts-selector]:checked").val() +
       "(Parts." +
       $("input[name=partsradio]:checked").val() +
       "(" +
       finalCodes +
       ")){\n"
     );
+    }
+
     partsTextAreaclear.value = '';
     bracketCount++;
   });
