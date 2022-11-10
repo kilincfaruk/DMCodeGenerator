@@ -388,6 +388,43 @@ window.onload = function () {
         "(Ksw.Code.Gets(" +
         finalKswCodes +
         ').IsMatchFull(@"' +
+        kswText3 +
+        '")'
+      );
+      shift(document.getElementById("generateCode").value);
+      if ($("#ksw_false").prop("checked")) {
+        $("#generateCode").append("==false){\n");
+      } else {
+        $("#generateCode").append("==true){\n");
+      }
+
+      //butonları askıya aldım
+
+    /*const kswTextAreaclear = document.getElementById('kswTextArea');
+    const kswCodeclear = document.getElementById('kswCode');
+    if ($("#code-button").prop("checked")) {
+      $.fn.addTabs(bracketCount);
+      var kswText = $("#kswTextArea").val();
+      var kswText3 = $.fn.multipleValues2(kswText);
+      for (var i = 0; i < bracketCount; i++) {
+        //shift(document.getElementById("generateCode").value);
+        $("#generateCode").append("&nbsp;");
+      }
+      // $('input[name=radio-btn]:checked').val()
+
+      var getkswCodes = $("#kswCode").val();
+      finalKswCodes = $.fn.multipleValues(getkswCodes);
+      for (var i = 0; i < bracketCount; i++) {
+        //shift(document.getElementById("generateCode").value);
+        $("#generateCode").append("&nbsp;");
+      }
+
+      // kswText
+      shift(document.getElementById("generateCode").value);
+      $("#generateCode").append($("input[name=ksw-selector]:checked").val() +
+        "(Ksw.Code.Gets(" +
+        finalKswCodes +
+        ').IsMatchFull(@"' +
 
         '(?is)^'
       );
@@ -411,7 +448,7 @@ window.onload = function () {
           $("#generateCode").append('"){');
   
             $("#kswCode").val('');
-          });
+          });*/
 
       }
 
